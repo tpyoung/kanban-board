@@ -1,0 +1,28 @@
+{
+  "name": "kanban-board",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ypyang237/kanban-board.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ypyang237/kanban-board/issues"
+  },
+  "homepage": "https://github.com/ypyang237/kanban-board#readme",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "pg": "^4.5.5",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.23.0",
+    "sequelize-cli": "^2.4.0"
+  }
+}
