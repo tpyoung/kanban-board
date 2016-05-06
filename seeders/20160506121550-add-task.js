@@ -2,9 +2,8 @@
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
-
-
-    var tasks = [
+    return queryInterface.bulkInsert('Tasks',
+      [
       {
         title : "Learn Angular",
         author : "Tyler",
@@ -29,17 +28,12 @@ module.exports = {
         createdAt : new Date(),
         updatedAt : new Date()
       }
-    ];
-
+    ]);
   },
 
-  down: function (queryInterface, Sequelize) {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
 
-      Example:
-      return queryInterface.bulkDelete('Person', null, {});
-    */
+
+  down: function (queryInterface, Sequelize) {
+    return queryInterface.bulkDelete('Tasks', null, {});
   }
 };
