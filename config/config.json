@@ -2,21 +2,21 @@
   "development": {
     "username": "owner",
     "password": null,
-    "database": "database_development",
+    "database": "tasks_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
     "username": "owner",
     "password": null,
-    "database": "database_test",
+    "database": "tasks_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "production": {
     "username": "owner",
     "password": null,
-    "database": "database_production",
+    "database": "tasks_production",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
