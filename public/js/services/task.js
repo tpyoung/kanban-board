@@ -28,6 +28,9 @@
       };
 
       this.editTask = function(id, field, update) {
+
+        console.log('EDITtASK', id, field, update)
+
         var data = {
           id: id,
           field: field,
