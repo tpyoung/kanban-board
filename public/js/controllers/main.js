@@ -21,10 +21,15 @@
         });
 
         $scope.editTask = function(id, field, update) {
-          console.log('edit', id, field, update);
         TaskService.editTask(id, field, update).then(function(res) {
-          // $scope.tasks = res.data;
+          $scope.tasks = res.data;
           });
         };
+
+        $scope.deleteTask = function(task) {
+            var index = $scope.tasks.indexOf(task);
+            $scope.tasks.splice(index, 1);
+        };
+
       }]);
 }());
