@@ -9,7 +9,7 @@ const express   = require('express')
 
 router.route('/')
   .get( (req, res) => {
-    console.log('In Routes, tasks.js', res);
+
     Task.findAll()
     .then((tasks) => {
        res.send(tasks);
@@ -25,7 +25,19 @@ router.route('/')
     .then((newTask) => {
       res.json(newTask);
     });
+  })
+  .put((req, res) => {
+    console.log('In Routes, tasks.js', req.body);
+    Task.findAll({
+      where: {
+        id: req.body.id
+      }
+    })
+    .then((tasks) => {
+      res.send(tasks);
+    });
   });
+
 
 
   module.exports = router;

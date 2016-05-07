@@ -34,14 +34,14 @@
           Title: {{ task.title }}
         </span>
         <input ng-show="editing" ng-submit="editing = false" ng-model="task.title" placeholder="{{ task.title }}" maxlength="20">
-          <button class="btn" ng-show="editing" type="submit" ng-click="editing = false; editTask(task.id, 'title', task.title)">Save</button>
+          <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'title', task.title); editing = false">Save</button>
         </li>
         <li>
         <span ng-hide="editing" ng-click="editing = true">
           Author: {{ task.author }}
         </span>
         <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.author" placeholder="{{ task.author }}">
-        <button class="btn" ng-show="editing" type="submit" ng-click="editing = false; editTask(task.id, 'author', task.author)">Save</button>
+        <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'author', task.author); editing = false">Save</button>
         </li>
         <li>
         <span ng-hide="editing" ng-click="editing = true">
