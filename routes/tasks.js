@@ -26,15 +26,25 @@ router.route('/')
       res.json(newTask);
     });
   })
-  .put((req, res) => {
+  .put((req, res, next) => {
     console.log('In Routes, tasks.js', req.body);
-    Task.findAll({
+
+    var changingObj = {};
+
+    changingObj[req.body.field] = req.body.update;
+
+    Task.update(changingObj,
+    {
       where: {
         id: req.body.id
       }
     })
     .then((tasks) => {
-      res.send(tasks);
+      console.log(tasks);
+      res.json(tasks);
+    })
+    .catch((err) => {
+      return next({ err: err });
     });
   });
 
