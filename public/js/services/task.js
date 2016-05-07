@@ -29,8 +29,6 @@
 
       this.editTask = function(id, field, update) {
 
-        console.log('EDITtASK', id, field, update)
-
         var data = {
           id: id,
           field: field,
@@ -44,8 +42,17 @@
         return $http.put('/tasks', data, config);
       };
 
-
-
-
+      this.deleteTask = function(id) {
+        var data = {
+          id: id
+        };
+        var config = {
+          headers : {
+            'Content-Type': 'application/json'
+        }
+      };
+      console.log('deleteTask', data);
+      return $http.delete('/tasks', data, config);
+    };
     }]);//end of service
 }());

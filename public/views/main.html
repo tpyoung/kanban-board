@@ -50,6 +50,8 @@
         <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.dueDate" placeholder="{{ task.dueDate }}">
         <button class="btn" ng-show="editing" type="submit" ng-click="editing = false; editTask(task.id, 'dueDate', task.dueDate)">Save</button>
         </li>
+      <button class="btn" type="submit" ng-click="deleteTask(task.id)">Delete</button>
+
       </div>
     </ul>
   </div>
