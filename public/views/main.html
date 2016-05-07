@@ -25,7 +25,7 @@
 
 
 <div id="massContainer">
-  <div class='todoTaskColumn'>
+  <div class='todoTaskColumn'  dragula="bag-one"  dragula-model="tasks">
   <h2> ToDo </h2>
   <ul>
     <div class = "todoContainer" ng-repeat="task in tasks | filter: {status: 'todo'}">
@@ -54,10 +54,10 @@
     </ul>
   </div>
 
-  <div class='doingTaskColumn'>
+  <div class='doingTaskColumn' dragula="bag-two"  dragula-model="tasks">
     <h2> Doing </h2>
     <ul>
-      <div class="doingContainer" ng-repeat="task in tasks | filter: {status: 'doing'}">
+      <div class="doingContainer" ng-repeat="task in tasks | filter: {status: 'doing'}" >
          <li>
          <span ng-hide="editing" ng-click="editing = true">
            Title: {{ task.title }}
@@ -83,10 +83,10 @@
     </ul>
   </div>
 
-  <div class='doneTaskColumn'>
+  <div class='doneTaskColumn' dragula="bag-three" dragula-model="tasks">
     <h2>Done </h2>
-      <ul ng-repeat=" task in tasks | filter: {status: 'done'}">
-        <div class="doneContainer" >
+      <ul >
+        <div class="doneContainer" ng-repeat=" task in tasks | filter: {status: 'done'}" >
           <li>
           <span ng-hide="editing" ng-click="editing = true">
             Title: {{ task.title }}

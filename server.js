@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 
 app.use(express.static('public'));
 app.use('/tasks',require('./routes/tasks.js'));
+
 db.sequelize.sync().then(() => {
   app.listen(PORT, () => {
     console.log(`server running on ${PORT}`);
