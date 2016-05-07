@@ -9,11 +9,10 @@ const express   = require('express')
 
 router.route('/')
   .get( (req, res) => {
+    console.log('In Routes, tasks.js', req.body);
     Task.findAll()
     .then((tasks) => {
-       res.render('/tasks',  {
-        tasks: tasks
-       });
+      res.send(tasks);
     });
   });
 
