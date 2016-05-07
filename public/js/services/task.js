@@ -44,14 +44,14 @@
 
       this.deleteTask = function(id) {
         var data = {
-          id: id
+          id: id,
         };
+        console.log('data.id', data)
         var config = {
           headers : {
             'Content-Type': 'application/json'
         }
       };
-      console.log('deleteTask', data);
       return $http.delete('/tasks', data, config);
     };
     }]);//end of service

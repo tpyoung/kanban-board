@@ -10,11 +10,9 @@
 
         $scope.tasks = [];
         TaskService.getTasks().then(function(res) {
-          console.log(res);
           $scope.tasks = res.data;
         });
         $scope.addTask = (function (res) {
-          console.log(res);
         TaskService.addTask(res).then(function(res) {
           $scope.tasks.push(res.data);
           });
@@ -26,9 +24,25 @@
           });
         };
 
-        $scope.deleteTask = function(task) {
-            var index = $scope.tasks.indexOf(task);
-            $scope.tasks.splice(index, 1);
+        $scope.deleteTask = function(id) {
+          TaskService.getTasks().then(function(req, res) {
+
+            var taskArray = req.data;
+
+            taskArray.forEach(function(element, index) {
+              if(element.id === id) {
+                var deleteTargetIndex = index;
+                console.log('deleteTarget', deleteTargetIndex);
+            $scope.tasks.splice(deleteTargetIndex, 1);
+              }
+            })
+
+            // TaskService.deleteTask(id).then(function(res) {
+            //   $scope.tasks.splice(deleteTargetIndex, 1);
+            // });
+          })
+           ;
+
         };
 
       }]);
