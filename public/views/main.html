@@ -28,7 +28,7 @@
   <div>
   <h2> ToDo </h2>
   <ul>
-    <div class = "todoContainer" ng-repeat="task in tasks ">
+    <div class = "todoContainer" ng-repeat="task in tasks | filter: {status: 'todo'}">
         <li>
         <span ng-hide="editing" ng-click="editing = true">
           Title: {{ task.title }}
@@ -56,8 +56,8 @@
 
   <div>
     <h2> Doing </h2>
-    <ul ng-repeat="task in tasks">
-      <div class="doingContainer">
+    <ul>
+      <div class="doingContainer" ng-repeat="task in tasks | filter: {status: 'doing'}">
          <li>
         <span ng-hide="editing" ng-click="editing = true">
           Title: {{ task.title }}
@@ -85,8 +85,8 @@
 
   <div>
     <h2>Done </h2>
-      <ul ng-repeat="task in tasks">
-        <div class="doneContainer">
+      <ul ng-repeat=" task in tasks | filter: {status: 'done'}">
+        <div class="doneContainer" >
            <li>
         <span ng-hide="editing" ng-click="editing = true">
           Title: {{ task.title }}
