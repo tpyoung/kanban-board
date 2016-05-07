@@ -49,17 +49,23 @@ router.route('/')
     });
   })
 
-  .delete((req, res) => {
+  .delete((req, res, next) => {
+    console.log('In Routes, tasks.js', req.body);
 
-    Task.destroy(req.body, {
+    Task.destroy({
       where: {
         id: req.body.id
       }
-      .then((tasks) => {
-        res.json(tasks);
-      })
+    })
+    .then((tasks) => {
+      return Task.findAll();
+    })
+    .then((tasks) => {
+      res.json(tasks);
+    })
+    .catch((err) => {
+      return  next ({err: err});
     });
-    console.log('In Routes, tasks.js', req.body);
 
   });
 

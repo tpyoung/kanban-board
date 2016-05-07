@@ -25,23 +25,10 @@
         };
 
         $scope.deleteTask = function(id) {
-          TaskService.getTasks().then(function(req, res) {
 
-            var taskArray = req.data;
-
-            taskArray.forEach(function(element, index) {
-              if(element.id === id) {
-                var deleteTargetIndex = index;
-                console.log('deleteTarget', deleteTargetIndex);
-            $scope.tasks.splice(deleteTargetIndex, 1);
-              }
-            })
-
-            // TaskService.deleteTask(id).then(function(res) {
-            //   $scope.tasks.splice(deleteTargetIndex, 1);
-            // });
-          })
-           ;
+            TaskService.deleteTask(id).then(function(res) {
+             $scope.tasks = res.data;
+            });
 
         };
 

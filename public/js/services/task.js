@@ -43,16 +43,16 @@
       };
 
       this.deleteTask = function(id) {
-        var data = {
-          id: id,
-        };
-        console.log('data.id', data)
+
         var config = {
+          data: {
+            id: id
+          },
           headers : {
             'Content-Type': 'application/json'
-        }
+          }
+        };
+        return $http.delete('/tasks', config);
       };
-      return $http.delete('/tasks', data, config);
-    };
     }]);//end of service
 }());
