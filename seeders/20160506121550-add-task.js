@@ -8,7 +8,7 @@ module.exports = {
         title : "Learn Angular",
         author : "Tyler",
         dueDate: 'May 20th',
-        status : "ok",
+        status : "todo",
         createdAt : new Date(),
         updatedAt : new Date()
       },
