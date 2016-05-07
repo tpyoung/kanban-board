@@ -7,7 +7,6 @@ module.exports = function(sequelize, Datatypes) {
     title: Datatypes.STRING,
     author: Datatypes.STRING,
     dueDate: Datatypes.STRING,
-    state: Datatypes.STRING,
     status: Datatypes.STRING
   }, {
     classMethods: {

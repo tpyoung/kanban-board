@@ -1,15 +1,20 @@
 'use strict';
 
-const express   = require('express'),
-      router    = express.Router()
-      // ,
-      // taskModel = require('./taskmodels')
+const express   = require('express')
+      , router    = express.Router()
+      , db = require('../models')
+      , Task = db.Task
       ;
 
 
 router.route('/')
-  .get(function (req, res) {
-    res.json({ hi: 'hi' });
+  .get( (req, res) => {
+    Task.findAll()
+    .then((tasks) => {
+       res.render('/tasks',  {
+        tasks: tasks
+       });
+    });
   });
 
   module.exports = router;
