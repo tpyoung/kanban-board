@@ -8,7 +8,7 @@
 .todoContainer {
   flex: 0 0 33%;
   background-color: red;
-  margin-bottom: 1%;
+  margin-bottom: 2%;
 }
 .doingContainer {
   flex: 0 0 33%;
@@ -19,4 +19,8 @@
   flex: 0 0 33%;
   background-color: yellow;
   margin-bottom: 1%;
+}
+
+li {
+  list-style:none;
 }
