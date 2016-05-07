@@ -11,10 +11,8 @@ router.route('/')
   .get( (req, res) => {
     Task.findAll()
     .then((tasks) => {
-       res.render('/tasks',  {
-        tasks: tasks
+       res.send(tasks);
        });
     });
-  });
 
   module.exports = router;
