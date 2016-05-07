@@ -2,23 +2,20 @@
   display: flex;
   justify-content: row nowrap;
   margin: 0 auto;
-  flex-flow: center;
   background-color: pink;
 }
 .todoContainer {
   flex: 0 0 33%;
   background-color: red;
-  margin-bottom: 2%;
+  margin-bottom: 10%;
 }
 .doingContainer {
   flex: 0 0 33%;
   background-color: blue;
-  margin-bottom: 1%;
 }
 .doneContainer {
   flex: 0 0 33%;
   background-color: yellow;
-  margin-bottom: 1%;
 }
 
 li {
