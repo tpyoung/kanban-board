@@ -9,12 +9,8 @@
       this.getTasks = function() {
         return $http({
           method: 'GET',
-          url: '/task'
+          url: '/tasks'
         });
       };
-
-
     }]);//end of service
-
-
 }());

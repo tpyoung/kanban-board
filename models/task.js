@@ -7,13 +7,14 @@ module.exports = function(sequelize, Datatypes) {
     title: Datatypes.STRING,
     author: Datatypes.STRING,
     dueDate: Datatypes.STRING,
-    state: Datatypes.STRING
+    state: Datatypes.STRING,
+    status: Datatypes.STRING
   }, {
     classMethods: {
       associate: function(models) {
-        Task.belongsTo(models.User, {
-          foreignKey: 'user_id'
-        });
+        // Task.belongsTo(models.User, {
+        //   foreignKey: 'user_id'
+        // });
       }
     }
 

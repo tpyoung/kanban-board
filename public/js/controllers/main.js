@@ -11,6 +11,7 @@
         $scope.tasks = [];
 
         TaskService.getTasks().then(function(response) {
+          console.log(response);
           $scope.tasks = response.data;
         });
 

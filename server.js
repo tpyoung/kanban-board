@@ -1,19 +1,17 @@
 'use strict';
 
-const express = require('express'),
-      app     = express(),
-      PORT    = process.env.PORT || 3000,
-      // taskRoute = require('./routes/task'),
-      bodyParser = require('body-parser'),
-      db = require('./models')
+const bodyParser = require('body-parser'),
+      express    = require('express'),
+      PORT       = process.env.PORT || 3000,
+      app        = express(),
+      db         = require('./models')
       ;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(express.static('public'));
-// app.use('/task', taskRoute);
-
+app.use('/tasks',require('./routes/tasks.js'));
 db.sequelize.sync().then(() => {
   app.listen(PORT, () => {
     console.log(`server running on ${PORT}`);
