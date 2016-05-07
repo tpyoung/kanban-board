@@ -27,6 +27,21 @@
         return $http.post('/tasks', data, config);
       };
 
+      this.editTask = function(id, field, update) {
+        var data = {
+          id: id,
+          field: field,
+          update: update
+        };
+        var config = {
+          headers : {
+            'Content-Type': 'application/json'
+          }
+        };
+        return $http.put('/tasks', data, config);
+      };
+
+
 
 
     }]);//end of service

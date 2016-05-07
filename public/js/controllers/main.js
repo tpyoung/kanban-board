@@ -19,5 +19,9 @@
           $scope.tasks.push(res.data);
           });
         });
+
+        $scope.editTask = function() {
+
+        }
       }]);
 }());
