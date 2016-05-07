@@ -39,8 +39,10 @@ router.route('/')
         id: req.body.id
       }
     })
+    .then((tasks)=> {
+      return Task.findAll();
+    })
     .then((tasks) => {
-      console.log(tasks);
       res.json(tasks);
     })
     .catch((err) => {
