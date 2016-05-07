@@ -9,7 +9,7 @@ const express   = require('express')
 
 router.route('/')
   .get( (req, res) => {
-    console.log('In Routes, tasks.js', req.body);
+    console.log('In Routes, tasks.js', res);
     Task.findAll()
     .then((tasks) => {
       res.send(tasks);

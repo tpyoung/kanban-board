@@ -5,3 +5,28 @@
   <li>{{task.author}}</li>
   <li>{{task.dueDate}}</li>
   <li>{{task.status}}</li>
+</ul>
+
+  <div>
+  <h2>Add New Task</h2>
+
+    <form action="/" method="POST">
+
+      <label for="Title">Title</label>
+      <input type="text" id="Title" ng-model="newTask.title">
+
+
+      <label for="Author">Author</label>
+      <input type="text" id="Author" ng-model="newTask.author">
+
+
+      <label for="Due">Due</label>
+      <input type="text" id="Due" ng-model="newTask.due">
+
+      <label for="State">State</label>
+      <input type="text" id="State" ng-model="newTask.state">
+
+      <button type="button" id="newTaskBtn">Add Task</button>
+    </form>
+
+</div>
