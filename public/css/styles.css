@@ -1,0 +1,23 @@
+#massContainer{
+  display: flex;
+  justify-content: row nowrap;
+  margin: 0 auto;
+  flex-flow: center;
+  width: 100%;
+  background-color: pink;
+}
+.todoContainer {
+  flex: 0 0 33%;
+  background-color: red;
+  margin-bottom: 1%;
+}
+.doingContainer {
+  flex: 1 0 33%;
+  background-color: blue;
+  margin-bottom: 1%;
+}
+.doneContainer {
+  flex: 1 0 33%;
+  background-color: yellow;
+  margin-bottom: 1%;
+}

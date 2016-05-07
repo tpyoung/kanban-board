@@ -12,8 +12,12 @@ router.route('/')
     console.log('In Routes, tasks.js', res);
     Task.findAll()
     .then((tasks) => {
-      res.send(tasks);
+       res.send(tasks);
+       });
+  // .post)
     });
-  });
+
+
+
 
   module.exports = router;
