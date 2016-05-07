@@ -13,7 +13,6 @@
           $scope.tasks = res.data;
         });
         $scope.addTask = (function (res) {
-          console.log(res);
         TaskService.addTask(res).then(function(res) {
           $scope.tasks.push(res.data);
           });
@@ -25,10 +24,11 @@
           });
         };
 
-        $scope.deleteTask = function(task) {
-            var index = $scope.tasks.indexOf(task);
-            $scope.tasks.splice(index, 1);
-        };
+        $scope.deleteTask = function(id) {
 
+            TaskService.deleteTask(id).then(function(res) {
+             $scope.tasks = res.data;
+            });
+        };
       }]);
 }());

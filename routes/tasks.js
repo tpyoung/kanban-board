@@ -27,7 +27,6 @@ router.route('/')
     });
   })
   .put((req, res, next) => {
-    console.log('In Routes, tasks.js', req.body);
 
     var changingObj = {};
 
@@ -48,6 +47,26 @@ router.route('/')
     .catch((err) => {
       return next({ err: err });
     });
+  })
+
+  .delete((req, res, next) => {
+    console.log('In Routes, tasks.js', req.body);
+
+    Task.destroy({
+      where: {
+        id: req.body.id
+      }
+    })
+    .then((tasks) => {
+      return Task.findAll();
+    })
+    .then((tasks) => {
+      res.json(tasks);
+    })
+    .catch((err) => {
+      return  next ({err: err});
+    });
+
   });
 
 
