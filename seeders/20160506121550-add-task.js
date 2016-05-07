@@ -16,7 +16,7 @@ module.exports = {
         title : "Learning Angular",
         author : "Tyler",
         dueDate: 'May 20th',
-        status : "do",
+        status : "doing",
         createdAt : new Date(),
         updatedAt : new Date()
       },

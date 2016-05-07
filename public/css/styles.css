@@ -1,21 +1,44 @@
 #massContainer{
   display: flex;
-  justify-content: row nowrap;
+  justify-content: center;
+  flex-flow: row nowrap;
   margin: 0 auto;
   background-color: pink;
+  width: 100%;
 }
 .todoContainer {
-  flex: 0 0 33%;
+  flex: 0 0 auto;
   background-color: red;
   margin-bottom: 10%;
 }
 .doingContainer {
-  flex: 0 0 33%;
+  flex: 0 0 auto;
   background-color: blue;
 }
 .doneContainer {
-  flex: 0 0 33%;
+  flex: 0 0 auto;
   background-color: yellow;
+}
+.todoTaskColumn {
+  flex: 0 0 33%;
+  justify-content: center;
+  flex-flow: column nowrap;
+  display: flex;
+  background: RGBA(193, 244, 224, 1.00);
+}
+.doingTaskColumn {
+  flex: 0 0 33%;
+  justify-content: center;
+  flex-flow: column nowrap;
+  display: flex;
+  background-color: RGBA(232, 159, 144, 1.00);
+}
+.doneTaskColumn{
+  flex: 0 0 33%;
+  justify-content: center;
+  flex-flow: column nowrap;
+  display: flex;
+  background-color: RGBA(168, 227, 255, 1.00);
 }
 
 li {
