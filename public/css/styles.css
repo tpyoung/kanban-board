@@ -40,6 +40,12 @@
   display: flex;
   background-color: RGBA(168, 227, 255, 1.00);
 }
+.task{
+  background-color: red;
+}
+
+
+
 
 li {
   list-style:none;

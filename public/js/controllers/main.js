@@ -29,8 +29,6 @@
             TaskService.deleteTask(id).then(function(res) {
              $scope.tasks = res.data;
             });
-
         };
-
       }]);
 }());
