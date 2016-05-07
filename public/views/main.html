@@ -30,18 +30,43 @@
 <h2> ToDo </h2>
 <ul >
 <div class = "todoContainer" ng-repeat="task in tasks ">
-  <li>
+        <li>
+        <div>
+        <span ng-hide="editing" ng-click="editing = true">
           Title: {{ task.title }}
+        </span>
+        <input ng-show="editing" ng-submit="editing = false" ng-model="task.title" placeholder="{{ task.title }}">
+        <button class="btn" ng-show="editing" type="submit">Save</button>
+        </div>
         </li>
         <li>
+        <span ng-hide="editing" ng-click="editing = true">
           Author: {{ task.author }}
+        </span>
+        <input ng-show="editing" ng-submit="editing = false" ng-model="task.title" placeholder="{{ task.title }}">
+        <button class="btn" ng-show="editing" type="submit">Save</button>
+        </div>
         </li>
         <li>
-          dueDate: {{ task.dueDate }}
+        <span ng-hide="editing" ng-click="editing = true">
+         Due Date: {{ task.dueDate }}
+        </span>
+        <input ng-show="editing" ng-submit="editing = false" ng-model="task.title" placeholder="{{ task.title }}">
+        <button class="btn" ng-show="editing" type="submit">Save</button>
+        </div>
         </li>
         <li>
-          status: {{ task.status }}
+        <span ng-hide="editing" ng-click="editing = true">
+          Status: {{ task.status }}
+        </span>
+        <input ng-show="editing" ng-submit="editing = false" ng-model="task.title" placeholder="{{ task.title }}">
+        <button class="btn" ng-show="editing" type="submit">Save</button>
+        </div>
+
         </li>
+
+
+
 </div>
       </ul>
 </div>
@@ -50,16 +75,24 @@
       <ul ng-repeat="task in tasks">
     <div class="doingContainer">
         <li>
+        <span>
           Title: {{ task.title }}
+        </span>
         </li>
         <li>
+        <span>
           Author: {{ task.author }}
+        <span>
         </li>
         <li>
+        <span>
           dueDate: {{ task.dueDate }}
+        </span>
         </li>
         <li>
+        <span>
           status: {{ task.status }}
+        </span>
         </li>
     </div>
       </ul>
@@ -68,17 +101,25 @@
       <h2>Done </h2>
       <ul ng-repeat="task in tasks">
     <div class="doneContainer">
-        <li>
+         <li>
+        <span>
           Title: {{ task.title }}
+        </span>
         </li>
         <li>
+        <span>
           Author: {{ task.author }}
+        <span>
         </li>
         <li>
+        <span>
           dueDate: {{ task.dueDate }}
+        </span>
         </li>
         <li>
+        <span>
           status: {{ task.status }}
+        </span>
         </li>
     </div>
       </ul>
