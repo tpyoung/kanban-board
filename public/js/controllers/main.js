@@ -9,14 +9,15 @@
       function($scope, $http, TaskService) {
 
         $scope.tasks = [];
-
-        TaskService.getTasks().then(function(response) {
-          console.log(response);
-          $scope.tasks = response.data;
+        TaskService.getTasks().then(function(res) {
+          console.log(res);
+          $scope.tasks = res.data;
         });
-
+        $scope.addTask = (function (res) {
+          console.log(res);
+        TaskService.addTask(res).then(function(res) {
+          $scope.tasks.push(res.data);
+          });
+        });
       }]);
-
-
-
 }());

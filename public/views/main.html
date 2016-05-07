@@ -1,73 +1,5 @@
  <div><h1>To-Do List</h1></div>
 
-<div ng-repeat="task in tasks | filter: state = 'ok' "class="todoContainer">
-<ul >
-  <li>
-          Title: {{ task.title }}
-        </li>
-        <li>
-          Author: {{ task.author }}
-        </li>
-        <li>
-          dueDate: {{ task.dueDate }}
-        </li>
-        <li>
-          story: {{ task.story }}
-        </li>
-        <li>
-          state: {{ task.state }}
-        </li>
-      </ul>
-
-</ul>
-</div>
-
- <div>
-      <h2> Doing </h2>
-      <ul ng-repeat="task in tasks">
-    <div class="doingContainer">
-        <li>
-          Title: {{ task.title }}
-        </li>
-        <li>
-          Author: {{ task.author }}
-        </li>
-        <li>
-          dueDate: {{ task.dueDate }}
-        </li>
-        <li>
-          story: {{ task.story }}
-        </li>
-        <li>
-          state: {{ task.state }}
-        </li>
-    </div>
-      </ul>
-  </div>
- <div>
-      <h2>Done </h2>
-      <ul ng-repeat="task in tasks">
-    <div class="doneContainer">
-        <li>
-          Title: {{ task.title }}
-        </li>
-        <li>
-          Author: {{ task.author }}
-        </li>
-        <li>
-          dueDate: {{ task.dueDate }}
-        </li>
-        <li>
-          story: {{ task.story }}
-        </li>
-        <li>
-          state: {{ todo.state }}
-        </li>
-    </div>
-      </ul>
-  </div>
-</div>
-
   <div>
   <h2>Add New Task</h2>
 
@@ -87,8 +19,68 @@
       <label for="State">State</label>
       <input type="text" id="State" ng-model="newTask.state">
 
-      <button type="button" id="newTaskBtn">Add Task</button>
+      <button type="button" id="newTaskBtn" ng-click="addTask(newTask)">Add Task</button>
     </form>
 
 </div>
 
+
+<div id="massContainer">
+<div>
+<h2> ToDo </h2>
+<ul >
+<div class = "todoContainer" ng-repeat="task in tasks ">
+  <li>
+          Title: {{ task.title }}
+        </li>
+        <li>
+          Author: {{ task.author }}
+        </li>
+        <li>
+          dueDate: {{ task.dueDate }}
+        </li>
+        <li>
+          status: {{ task.status }}
+        </li>
+</div>
+      </ul>
+</div>
+ <div>
+      <h2> Doing </h2>
+      <ul ng-repeat="task in tasks">
+    <div class="doingContainer">
+        <li>
+          Title: {{ task.title }}
+        </li>
+        <li>
+          Author: {{ task.author }}
+        </li>
+        <li>
+          dueDate: {{ task.dueDate }}
+        </li>
+        <li>
+          status: {{ task.status }}
+        </li>
+    </div>
+      </ul>
+  </div>
+ <div>
+      <h2>Done </h2>
+      <ul ng-repeat="task in tasks">
+    <div class="doneContainer">
+        <li>
+          Title: {{ task.title }}
+        </li>
+        <li>
+          Author: {{ task.author }}
+        </li>
+        <li>
+          dueDate: {{ task.dueDate }}
+        </li>
+        <li>
+          status: {{ task.status }}
+        </li>
+    </div>
+      </ul>
+  </div>
+</div>

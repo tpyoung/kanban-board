@@ -13,11 +13,19 @@ router.route('/')
     Task.findAll()
     .then((tasks) => {
        res.send(tasks);
-       });
-  // .post)
+       })
+  })
+  .post((req, res)  => {
+    Task.create({
+      title: req.body.title,
+      author: req.body.author,
+      dueDate: req.body.dueDate,
+      status: req.body.status
+    })
+    .then((newTask) => {
+      res.json(newTask);
     });
-
-
+  });
 
 
   module.exports = router;
