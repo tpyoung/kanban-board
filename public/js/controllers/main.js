@@ -10,9 +10,11 @@
 
         $scope.tasks = [];
         TaskService.getTasks().then(function(res) {
+          console.log('ADD task in main.js', res.data )
           $scope.tasks = res.data;
         });
         $scope.addTask = (function (res) {
+          console.log(res);
         TaskService.addTask(res).then(function(res) {
           $scope.tasks.push(res.data);
           });

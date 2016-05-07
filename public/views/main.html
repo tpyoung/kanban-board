@@ -14,10 +14,15 @@
 
 
       <label for="Due">Due</label>
-      <input type="text" id="Due" ng-model="newTask.due">
+      <input type="date" id="dueDate" ng-model="newTask.dueDate">
 
       <label for="status">Status</label>
-      <input type="text" id="status" ng-model="newTask.status">
+      <select id="status" ng-model="newTask.status">
+        <option value="todo">Todo</option>
+        <option value="doing">Doing</option>
+        <option value="done">Done</option>
+      </select>
+      <!-- <input type="text" id="status" ng-model="newTask.status"> -->
 
       <button type="button" id="newTaskBtn" ng-click="addTask(newTask)">Add Task</button>
     </form>
@@ -44,13 +49,12 @@
         </li>
         <li>
         <span ng-hide="editing" ng-click="editing = true">
-         Due Date: {{ task.dueDate }}
+         Due Date: {{ task.dueDate}}
         </span>
-        <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.dueDate" placeholder="{{ task.dueDate }}">
+        <input type="date" ng-show="editing" ng-submit="editing = false" ng-model="task.dueDate" placeholder="{{ task.dueDate }}">
         <button class="btn" ng-show="editing" type="submit" ng-click="editing = false; editTask(task.id, 'dueDate', task.dueDate)">Save</button>
         <button class="btn" type="submit" ng-click="deleteTask(task.id)">Delete </button>
         </li>
-      </div>
     </ul>
   </div>
 

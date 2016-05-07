@@ -13,6 +13,7 @@
         });
       };
       this.addTask = function(task) {
+
         var data = {
           title : task.title,
           author : task.author,
