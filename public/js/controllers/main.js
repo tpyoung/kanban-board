@@ -20,8 +20,10 @@
           });
         });
 
-        $scope.editTask = function() {
-
-        }
+        $scope.editTask = function(id, field, update) {
+        TaskService.editTask(id, field, update).then(function(res) {
+          $scope.tasks = res.data;
+          });
+        };
       }]);
 }());
