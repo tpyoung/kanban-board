@@ -10,7 +10,6 @@
 
         $scope.tasks = [];
         TaskService.getTasks().then(function(res) {
-          console.log(res);
           $scope.tasks = res.data;
         });
         $scope.addTask = (function (res) {

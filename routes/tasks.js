@@ -1,9 +1,9 @@
 'use strict';
 
-const express   = require('express')
-      , router    = express.Router()
-      , db = require('../models')
-      , Task = db.Task
+const express   = require('express'),
+      router    = express.Router(),
+      db = require('../models'),
+      Task = db.Task
       ;
 
 
