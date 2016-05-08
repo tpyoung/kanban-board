@@ -9,7 +9,6 @@
 .todoContainer {
   flex: 0 0 auto;
   background-color: red;
-  margin-bottom: 10%;
 }
 .doingContainer {
   flex: 0 0 auto;
@@ -42,6 +41,7 @@
 }
 .task{
   background-color: red;
+  margin-bottom: 2%;
 }
 
 

@@ -2,9 +2,8 @@
 
 (function() {
 
-  angular.module('kanban', ['ngRoute', angularDragula(angular)]);
 
-  var myApp = angular.module('kanban');
+  var myApp =  angular.module('kanban', ['ngRoute', angularDragula(angular)]);
 
   myApp
     .config(['$routeProvider','$locationProvider',
