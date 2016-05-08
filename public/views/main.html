@@ -26,9 +26,9 @@
 
 <div id="massContainer" >
 
-  <div class='todoTaskColumn' id='todo' class='wrapper'>
-  <h2> ToDo </h2>
-       <div ng-repeat="task in tasks | filter: {status: 'todo'}"  dragula-model="tasks" dragula="bag-one">
+  <div class='todoTaskColumn' id='todo' dragula-model="taskMove" dragula="first-bag" dragula-scope="$parent">
+  <!-- <h2> ToDo </h2> -->
+       <div ng-repeat="task in tasks | filter: {status: 'todo'}"  >
         <div class='task'>
             <span ng-hide="editing" ng-click="editing = true">
               Title: {{ task.title }}
@@ -56,39 +56,39 @@
     </div>
 </div>
 
-  <div class='doingTaskColumn' id='doing' class='wrapper'>
-    <h2> Doing </h2>
-      <div ng-repeat="task in tasks | filter: {status: 'doing'}"  dragula-model="tasks" dragula="bag-one">
-        <div>
-            <span ng-hide="editing" ng-click="editing = true">
-              Title: {{ task.title }}
-            </span>
-            <input ng-show="editing" ng-submit="editing = false" ng-model="task.title" placeholder="{{ task.title }}" maxlength="20">
-              <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'title', task.title); editing = false">Save</button>
-              <br>
-            <span ng-hide="editing" ng-click="editing = true">
-              Author: {{ task.author }}
-            </span>
-            <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.author" placeholder="{{ task.author }}">
-            <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'author', task.author); editing = false">Save</button>
+  <div class='doingTaskColumn' id='doing' dragula-model="taskMove" dragula="first-bag" dragula-scope="$parent">
+    <!-- <h2> Doing </h2> -->
+      <div ng-repeat="task in tasks | filter: {status: 'doing'}">
+        <div  class='task'>
+          <span ng-hide="editing" ng-click="editing = true">
+            Title: {{ task.title }}
+          </span>
+          <input ng-show="editing" ng-submit="editing = false" ng-model="task.title" placeholder="{{ task.title }}" maxlength="20">
+            <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'title', task.title); editing = false">Save</button>
             <br>
-            <span ng-hide="editing" ng-click="editing = true">
-             Due Date: {{ task.dueDate }}
-            </span>
+          <span ng-hide="editing" ng-click="editing = true">
+            Author: {{ task.author }}
+          </span>
+          <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.author" placeholder="{{ task.author }}">
+          <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'author', task.author); editing = false">Save</button>
+          <br>
+          <span ng-hide="editing" ng-click="editing = true">
+           Due Date: {{ task.dueDate }}
+          </span>
 
-            <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.dueDate" placeholder="{{ task.dueDate }}">
-            <button class="btn" ng-show="editing" type="submit" ng-click="editing = false; editTask(task.id, 'dueDate', task.dueDate)">Save</button>
-              <br>
-            <span ng-hide="editing" ng-click="editing = true">
-             status: {{ task.status }}
-            </span>
+          <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.dueDate" placeholder="{{ task.dueDate }}">
+          <button class="btn" ng-show="editing" type="submit" ng-click="editing = false; editTask(task.id, 'dueDate', task.dueDate)">Save</button>
+            <br>
+          <span ng-hide="editing" ng-click="editing = true">
+           status: {{ task.status }}
+          </span>
         </div>
     </div>
   </div>
 
-<div class='doneTaskColumn' id='done' class='wrapper'>
-    <h2>Done </h2>
-      <div ng-repeat="task in tasks | filter: {status: 'done'}"  dragula-model="tasks" dragula="bag-one">
+<div class='doneTaskColumn' id='done' dragula-model="taskMove" dragula="first-bag" dragula-scope="$parent">
+    <!-- <h2>Done </h2> -->
+      <div ng-repeat="task in tasks | filter: {status: 'done'}">
         <div class='task'>
             <span ng-hide="editing" ng-click="editing = true">
               Title: {{ task.title }}
