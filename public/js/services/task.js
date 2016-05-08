@@ -13,6 +13,10 @@
         });
       };
       this.addTask = function(task) {
+        // var rawDate = JSON.stringify(task.dueDate);
+        // var myDate = rawDate.substring(0,11);
+
+        console.log('STRING', task.dueDate)
 
         var data = {
           title : task.title,

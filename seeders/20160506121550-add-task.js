@@ -7,7 +7,8 @@ module.exports = {
       {
         title : "Learn Angular",
         author : "Tyler",
-        dueDate: 'May 20th',
+        dueDate:
+"2016-05-03T10:00:00.000Z",
         status : "todo",
         createdAt : new Date(),
         updatedAt : new Date()
@@ -15,7 +16,8 @@ module.exports = {
       {
         title : "Learning Angular",
         author : "Tyler",
-        dueDate: 'May 20th',
+        dueDate:
+"2016-05-03T10:00:00.000Z",
         status : "doing",
         createdAt : new Date(),
         updatedAt : new Date()
@@ -23,7 +25,8 @@ module.exports = {
       {
         title : "Learnt Angular",
         author : "Pam",
-        dueDate: 'May 20th',
+        dueDate:
+"2016-05-03T10:00:00.000Z",
         status : "done",
         createdAt : new Date(),
         updatedAt : new Date()

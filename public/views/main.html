@@ -30,6 +30,7 @@
 
 
 <div id="massContainer">
+
   <div class='todoTaskColumn'  dragula="bag-one"  dragula-model="tasks">
   <h2> ToDo </h2>
     <ul ng-repeat="task in tasks | filter: {status: 'todo'}" class='task'>
@@ -51,7 +52,7 @@
         <span ng-hide="editing" ng-click="editing = true">
          Due Date: {{ task.dueDate}}
         </span>
-        <input type="date" ng-show="editing" ng-submit="editing = false" ng-model="task.dueDate" placeholder="{{ task.dueDate }}">
+        <input type="datetime" ng-show="editing" ng-submit="editing = false" ng-model="task.dueDate" placeholder="{{ task.dueDate }}">
         <button class="btn" ng-show="editing" type="submit" ng-click="editing = false; editTask(task.id, 'dueDate', task.dueDate)">Save</button>
         <button class="btn" type="submit" ng-click="deleteTask(task.id)">Delete </button>
         </li>
@@ -82,6 +83,7 @@
          </span>
          <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.dueDate" placeholder="{{ task.dueDate }}">
          <button class="btn" ng-show="editing" type="submit" ng-click="editing = false; editTask(task.id, 'dueDate', task.dueDate)">Save</button>
+          <button class="btn" type="submit" ng-click="deleteTask(task.id)">Delete </button>
          </li>
     </ul>
   </div>
@@ -109,6 +111,7 @@
           </span>
           <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.dueDate" placeholder="{{ task.dueDate }}">
           <button class="btn" ng-show="editing" type="submit" ng-click="editing = false; editTask(task.id, 'dueDate', task.dueDate)">Save</button>
+           <button class="btn" type="submit" ng-click="deleteTask(task.id)">Delete </button>
           </li>
         </div>
     </div>
