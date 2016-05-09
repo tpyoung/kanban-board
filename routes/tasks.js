@@ -16,7 +16,7 @@ router.route('/')
        })
   })
   .post((req, res)  => {
-    console.log('inside server', req.body.dueDate)
+
     Task.create({
       title: req.body.title,
       author: req.body.author,

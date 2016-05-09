@@ -1,16 +1,13 @@
-<div id="signUpForm">
-  <h2>Sign Up</h2>
 
-  <form action="/signUp" method="POST">
+<div id="signUpForm" class="ng-show">
+  <form action="/signUp">
+    <label for="Username"> Username : </label>
+    <input type="text" id="username" ng-model="newUser.username">
 
-  <label for="userName"> Username: </label>
-  <input type="text" id="userName" ng-model="newUser.username">
+    <label for="Password"> Password : </label>
+    <input type="text" id="password" ng-model="newUser.password">
 
-  <label for="passWord"> Password: </label>
-  <input type="text" id="passWord" ng-model="newUser.password">
-
-  <button type="button" id="newUserBtn" ng-click="addUser(newUser)">Sign Up</button>
+    <button type="button" id="newUserBtn" ng-click="addUser(newUser)" >Sign Up </button>
 
   </form>
-
 </div>

@@ -17,6 +17,7 @@ body {
   width: 98%;
   position: fixed;
   z-index: 2;
+  visibility: hidden;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
@@ -29,5 +30,15 @@ body {
     margin:0;
     padding:0;
   }
+}
+a {
+  color: white;
+}
+
+#signUpForm {
+  background-color:  white;
+  padding: 10%;
+  margin-top: 10%;
+  height: 600px;
 }
 @import "modules/main";

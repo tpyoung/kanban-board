@@ -9,10 +9,8 @@ var app =  angular.module('kanban')
 
         $scope.tasks = [];
         TaskService.getTasks().then(function(res) {
-          console.log(res);
           res.data.forEach(function(element) {
             var date = new Date(element.dueDate);
-            console.log('THE DATE', date);
             var displayDate = (date.getMonth()+1) + '-' + date.getDate() + '-' + date.getFullYear();
             element.dueDate = displayDate;
           });
@@ -38,17 +36,6 @@ var app =  angular.module('kanban')
           page.className = "newTask-Up";
         }
     };
-
-        $scope.tasks = [];
-        TaskService.getTasks().then(function(res) {
-          $scope.tasks = res.data;
-        });
-
-        $scope.addTask = (function (res) {
-        TaskService.addTask(res).then(function(res) {
-          $scope.tasks.push(res.data);
-          });
-        });
 
         $scope.editTask = function(id, field, update) {
         TaskService.editTask(id, field, update).then(function(res) {
