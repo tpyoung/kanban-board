@@ -1,5 +1,5 @@
 .newTask-Up {
-    padding-top: 1.2%;
+    padding-top: 1.4%;
     transition: .6s ease-in-out;
 }
 
@@ -7,6 +7,7 @@
  padding-top: 5%;
  transition: .6s ease-in-out;
 }
+
 #massContainer{
   display: flex;
   justify-content: center;
@@ -31,8 +32,8 @@
   background-color: RGBA(104, 107, 121, 0.20);
     border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
-
 }
+
 .doingTaskColumn {
   flex: 0 0 33%;
   display: flex;
@@ -42,8 +43,8 @@
   border-right: dotted 2.5px RGBA(43, 49, 52, 1.00);
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
-
 }
+
 .doneTaskColumn{
   flex: 0 0 33.3%;
   display: flex;
@@ -51,8 +52,8 @@
   background-color: RGBA(104, 107, 121, 0.20);
     border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
-
 }
+
 .task{
   margin: 0 auto;
   flex: 0 0 90%;
@@ -62,7 +63,7 @@
   padding: 0 0 5% 0 ;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.92);
+  background-color: rgba(255, 255, 255, 0.95);
   display: flex;
   flex-flow: column wrap;
 
@@ -70,18 +71,37 @@
     display: block;
     margin-bottom: 1%;
   }
+
   .taskName {
       border-bottom: none;
       border-top-left-radius: 8px;
       border-top-right-radius: 8px;
       background-color: RGBA(114, 114, 114, 0.95);
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       padding: 2%;
+      margin-top: -1px;
       color: rgba(255, 255, 255, 0.90);
       font-weight: 500;
   }
+
   .titleSpan {
     border-bottom: none;
+  }
+  .completingAndDue {
+    bottom: 0px;
+    background-color: red;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
+
+      .completingSpan{
+        background-color: yellow;
+      }
+      .dueSpan{
+        background-color: blue;
+      }
   }
 }
 
