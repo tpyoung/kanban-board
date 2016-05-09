@@ -1,0 +1,33 @@
+@import "partials/reset";
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,500);
+@-ms-viewport{
+  width: device-width;
+};
+
+body {
+  font-family: 'Roboto';
+  font-weight: 100;
+  background-color: RGBA(43, 49, 52, 1.00);
+}
+
+#pageHead{
+  background-color: rgba(255,255,255, 0.99);
+  color: RGBA(241, 118, 58, 1.00);
+  padding: 1%;
+  width: 98%;
+  position: fixed;
+  z-index: 2;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  #mainTitle{
+    font-size: 2vw;
+  }
+  #addButton {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+  }
+}
+@import "modules/main";

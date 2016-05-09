@@ -1,14 +1,12 @@
 'use strict';
 
-
 (function() {
 
 var app =  angular.module('kanban')
 
-    .controller('MainController', ['$scope', '$http', 'TaskService', 'dragulaService',
-      function($scope, $http, TaskService, dragulaService) {
+    .controller('MainController', ['$scope', '$document', '$http', 'TaskService', 'dragulaService',
+      function($scope, $http, $document, TaskService, dragulaService) {
 
-<<<<<<< HEAD
         $scope.tasks = [];
         TaskService.getTasks().then(function(res) {
           console.log(res);
@@ -28,46 +26,58 @@ var app =  angular.module('kanban')
           $scope.tasks.push(res.data);
           });
         });
-=======
-      $scope.tasks = [];
-      TaskService.getTasks().then(function(res) {
-        $scope.tasks = res.data;
-      });
->>>>>>> ce1799e0f4b1264615e786aa78cfd71a078223f1
 
-      $scope.addTask = (function (res) {
-      TaskService.addTask(res).then(function(res) {
-        $scope.tasks.push(res.data);
+        $scope.toggle = true;
+
+        $scope.classChange = function() {
+        var page = $document.getElementById('allPage');
+        var className = page.getAttribute("class");
+        if(className === "newTask-Up"){
+          page.className = "newTask-Down";
+        } else {
+          page.className = "newTask-Up";
+        }
+    };
+
+        $scope.tasks = [];
+        TaskService.getTasks().then(function(res) {
+          $scope.tasks = res.data;
         });
-      });
 
-      $scope.editTask = function(id, field, update) {
-      TaskService.editTask(id, field, update).then(function(res) {
-        $scope.tasks = res.data;
+        $scope.addTask = (function (res) {
+        TaskService.addTask(res).then(function(res) {
+          $scope.tasks.push(res.data);
+          });
         });
-      };
 
-      $scope.deleteTask = function(id) {
-      TaskService.deleteTask(id).then(function(res) {
-         $scope.tasks = res.data;
-        });
-      };
+        $scope.editTask = function(id, field, update) {
+        TaskService.editTask(id, field, update).then(function(res) {
+          $scope.tasks = res.data;
+          });
+        };
 
-      $scope.$on('first-bag.drag', function (e, el) {
-        console.log('drag');
-      });
+        $scope.deleteTask = function(id) {
+        TaskService.deleteTask(id).then(function(res) {
+           $scope.tasks = res.data;
+          });
+        };
 
-      $scope.$on('first-bag.drop', function (e, el) {
-        console.log(e);
-        console.log(el);
-      });
+        $scope.$on('first-bag.drop', function (e, el) {
+          var taskHTML = (el[0].innerHTML);
+          var idStart = taskHTML.indexOf('@') + 1;
+          var idEnd = taskHTML.indexOf('@', idStart);
+          var id = taskHTML.substring(idStart, idEnd);
 
-      $scope.$on('first-bag.over', function (e, el, container) {
-        console.log('over');
-      });
+          var statusHTML = (el[0].parentNode.innerHTML);
+          var statusStart = statusHTML.indexOf("{status: '") + 10;
+          var statusEnd = statusHTML.indexOf("'", statusStart);
+          var update = statusHTML.substring(statusStart, statusEnd);
+          var field  = 'status';
 
-      $scope.$on('first-bag.out', function (e, el, container) {
-        console.log('out');
-      });
+          TaskService.editTask(id, 'status', update).then(function(res){
+            $scope.tasks = res.data;
+          })
+          .catch(e);
+    });
   }]);
 }());

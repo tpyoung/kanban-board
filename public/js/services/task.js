@@ -24,6 +24,7 @@
           dueDate : task.dueDate,
           status : task.status
         };
+        data.status = 'todo';
         var config = {
           headers : {
             'Content-Type': 'application/json'
