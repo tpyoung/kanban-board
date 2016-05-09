@@ -1,21 +1,25 @@
 'use strict';
 
-
 (function() {
 
 var app =  angular.module('kanban')
 
-    .controller('MainController', ['$scope',   '$http', 'TaskService', 'dragulaService',
-      function($scope, $http, TaskService, dragulaService) {
+    .controller('MainController', ['$scope', '$document', '$http', 'TaskService', 'dragulaService',
+      function($scope, $http, $document, TaskService, dragulaService) {
 
         $scope.toggle = true;
-        $scope.$watch('toggle', function(){
-          if ($scope.toggle === true ) {
-             $scope.toggleText = 'Add Task';
-          } else {
-            $scope.toggleText = 'Cancel Add';
-          }
-        });
+
+        $scope.classChange = function() {
+        var page = $document.getElementById('allPage');
+        var className = page.getAttribute("class");
+        if(className === "newTask-Up"){
+          page.className = "newTask-Down";
+        } else {
+          page.className = "newTask-Up";
+        }
+    };
+
+
 
         $scope.tasks = [];
         TaskService.getTasks().then(function(res) {
@@ -41,19 +45,15 @@ var app =  angular.module('kanban')
         };
 
         $scope.$on('first-bag.drop', function (e, el) {
-         console.log('drop');
-         var idText = (el[0].innerHTML);
-         console.log(idText);
-          var idStart = idText.indexOf('@') + 1;
-          var idEnd = idText.indexOf('@', idStart);
-          var id = idText.substring(idStart, idEnd);
-          console.log(id);
+          var taskHTML = (el[0].innerHTML);
+          var idStart = taskHTML.indexOf('@') + 1;
+          var idEnd = taskHTML.indexOf('@', idStart);
+          var id = taskHTML.substring(idStart, idEnd);
 
-          var statusText = (el[0].parentNode.innerHTML);
-          var statusstart = statusText.indexOf("{status: '") + 10;
-          var statusend = statusText.indexOf("'", statusstart);
-          var update = statusText.substring(statusstart, statusend);
-          console.log(update);
+          var statusHTML = (el[0].parentNode.innerHTML);
+          var statusStart = statusHTML.indexOf("{status: '") + 10;
+          var statusEnd = statusHTML.indexOf("'", statusStart);
+          var update = statusHTML.substring(statusStart, statusEnd);
           var field  = 'status';
 
           TaskService.editTask(id, 'status', update).then(function(res){

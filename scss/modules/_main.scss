@@ -1,11 +1,11 @@
 .newTask-Up {
     padding-top: 1.2%;
-    transition: .8s ease-in-out;
+    transition: .6s ease-in-out;
 }
 
 .newTask-Down {
  padding-top: 5%;
- transition: .8s ease-in-out;
+ transition: .6s ease-in-out;
 }
 #massContainer{
   display: flex;
@@ -77,8 +77,8 @@
       background-color: RGBA(114, 114, 114, 0.95);
       text-transform: uppercase;
       padding: 2%;
-      color: white;
-      font-weight: 700;
+      color: rgba(255, 255, 255, 0.90);
+      font-weight: 500;
   }
   .titleSpan {
     border-bottom: none;
