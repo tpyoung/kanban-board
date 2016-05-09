@@ -4,6 +4,7 @@
 
 var app =  angular.module('kanban')
 
+
     .controller('MainController', ['$scope', '$document', '$http', 'IndexService', 'TaskService', 'dragulaService',
       function($scope, $http, $document, IndexService, TaskService, dragulaService) {
 
@@ -14,16 +15,36 @@ var app =  angular.module('kanban')
         });
 
         $scope.tasks = [];
+
         TaskService.getTasks().then(function(res) {
+          res.data.forEach(function(element) {
+            var date = new Date(element.dueDate);
+            var displayDate = (date.getMonth()+1) + '-' + date.getDate() + '-' + date.getFullYear();
+            element.dueDate = displayDate;
+          });
           $scope.tasks = res.data;
         });
-
         $scope.addTask = (function (res) {
+          var date = new Date(res.dueDate);
+          var myDate = (date.getMonth()+1) + '-' + date.getDate() + '-' + date.getFullYear();
         TaskService.addTask(res).then(function(res) {
+          res.data.dueDate = myDate;
           $scope.tasks.push(res.data);
           });
         });
 
+        $scope.toggle = true;
+
+        $scope.classChange = function() {
+        var page = $document.getElementById('allPage');
+        var className = page.getAttribute("class");
+        if(className === "newTask-Up"){
+          page.className = "newTask-Down";
+        } else {
+          page.className = "newTask-Up";
+        }
+
+    };
         $scope.editTask = function(id, field, update) {
         TaskService.editTask(id, field, update).then(function(res) {
           $scope.tasks = res.data;

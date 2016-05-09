@@ -1,3 +1,4 @@
+
 'use strict';
 
 const bodyParser = require('body-parser'),
@@ -12,6 +13,8 @@ app.use(bodyParser.json());
 
 app.use(express.static('public'));
 app.use('/tasks',require('./routes/tasks.js'));
+
+app.use('/signUp', require('./routes/users.js'));
 
 db.sequelize.sync().then(() => {
   app.listen(PORT, () => {

@@ -33,5 +33,15 @@ body {
     padding:0;
   }
 }
+a {
+  color: white;
+}
+
+#signUpForm {
+  background-color:  white;
+  padding: 10%;
+  margin-top: 10%;
+  height: 600px;
+}
 
 @import "modules/main";

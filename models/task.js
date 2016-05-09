@@ -6,7 +6,7 @@ module.exports = function(sequelize, Datatypes) {
   var Task = sequelize.define("Task", {
     title: Datatypes.STRING,
     author: Datatypes.STRING,
-    dueDate: Datatypes.STRING,
+    dueDate: Datatypes.DATE,
     status: Datatypes.STRING
   }, {
     classMethods: {
