@@ -8,9 +8,9 @@
 </head>
 
 <body ng-app="kanban">
-  <div id="pageHead">
+  <div id="pageHead" ng-controller='IndexController'>
     <h1 id='mainTitle'>Kanbangular</h1>
-    <p id="addButton"  ng-click="toggle = !toggle; classChange()">{{toggle && 'Cancel Add' || 'Add Task'}}</p>
+    <button id="addButton"  ng-click="toggleForm(); toggle = !toggle">{{toggle && 'Cancel Add' || 'Add Task'}}</button>
   </div>
 
 
@@ -25,8 +25,11 @@
   <script type="text/javascript" src="/js/myApp.js"></script>
   <script type="text/javascript" src="/js/controllers/main.js"></script>
   <script type="text/javascript" src="/js/controllers/user.js"></script>
+  <script type="text/javascript" src="/js/controllers/indexController.js"></script>
   <script type="text/javascript" src="/js/services/task.js"></script>
   <script type="text/javascript" src="/js/services/user.js"></script>
+  <script type="text/javascript" src="/js/services/index.js"></script>
+
   <script type="text/javascript" src="/js/extras/onclick.js"></script>
 
 
