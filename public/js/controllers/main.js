@@ -4,22 +4,15 @@
 
 var app =  angular.module('kanban')
 
-    .controller('MainController', ['$scope', '$document', '$http', 'TaskService', 'dragulaService',
-      function($scope, $http, $document, TaskService, dragulaService) {
+    .controller('MainController', ['$scope', '$document', '$http', 'IndexService', 'TaskService', 'dragulaService',
+      function($scope, $http, $document, IndexService, TaskService, dragulaService) {
 
-        $scope.toggle = true;
+        $scope.formIsActive = IndexService.formIsActive;
 
-        $scope.classChange = function() {
-        var page = $document.getElementById('allPage');
-        var className = page.getAttribute("class");
-        if(className === "newTask-Up"){
-          page.className = "newTask-Down";
-        } else {
-          page.className = "newTask-Up";
-        }
-    };
-
-
+        $scope.$watch('formIsActive', function (newVal, oldVal) {
+          console.log('hey der');
+          $scope.formIsActive = newVal;
+        });
 
         $scope.tasks = [];
         TaskService.getTasks().then(function(res) {
@@ -61,5 +54,6 @@ var app =  angular.module('kanban')
           })
           .catch(e);
     });
+
   }]);
-}());
+})();

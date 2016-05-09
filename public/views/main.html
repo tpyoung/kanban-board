@@ -1,4 +1,4 @@
- <div id='allPage' class='newTask-Up'>
+ <div id='allPage' ng-init="formIsActive2 = formIsActive" ng-class="{'newTask-Down' : formIsActive2, 'newTask-Up': !formIsActive2}">
  <div id="addTaskForm">
   <form action="/" method="POST">
 
@@ -15,7 +15,7 @@
 
     <input type="text" id="status" ng-hide='true' ng-model="newTask.status" value='todo'>
 
-    <button type="button" id="newTaskBtn" ng-click="addTask(newTask)" onclick="classChange()">Add Task</button>
+    <button type="button" id="newTaskBtn" ng-click="addTask(newTask); classChange()">Add Task</button>
   </form>
 </div>
 
