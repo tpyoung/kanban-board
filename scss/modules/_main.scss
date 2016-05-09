@@ -89,18 +89,18 @@
     border-bottom: none;
   }
   .completingAndDue {
+    margin-top:10%;
     bottom: 0px;
-    background-color: red;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
 
 
       .completingSpan{
-        background-color: yellow;
+        // background-color: yellow;
       }
       .dueSpan{
-        background-color: blue;
+        // background-color: blue;
       }
   }
 }
