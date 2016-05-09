@@ -3,11 +3,12 @@
 
 (function() {
 
-  angular.module('kanban')
+var app =  angular.module('kanban')
 
     .controller('MainController', ['$scope', '$http', 'TaskService', 'dragulaService',
       function($scope, $http, TaskService, dragulaService) {
 
+<<<<<<< HEAD
         $scope.tasks = [];
         TaskService.getTasks().then(function(res) {
           console.log(res);
@@ -27,37 +28,46 @@
           $scope.tasks.push(res.data);
           });
         });
+=======
+      $scope.tasks = [];
+      TaskService.getTasks().then(function(res) {
+        $scope.tasks = res.data;
+      });
+>>>>>>> ce1799e0f4b1264615e786aa78cfd71a078223f1
 
-        $scope.editTask = function(id, field, update) {
-        TaskService.editTask(id, field, update).then(function(res) {
-          $scope.tasks = res.data;
-          });
-        };
-
-        $scope.deleteTask = function(id) {
-
-            TaskService.deleteTask(id).then(function(res) {
-             $scope.tasks = res.data;
-            });
-        };
-        // $scope.$on('bag-one.drag', function (e, el) {
-        //   el.removeClass('ex-moved');
-        // });
-
-        // $scope.$on('bag-one.drop', function (e, el) {
-        //   el.addClass('ex-moved');
-        // });
-
-        // $scope.$on('bag-one.over', function (e, el, container) {
-        //   container.addClass('ex-over');
-        // });
-
-        // $scope.$on('bag-one.out', function (e, el, container) {
-        //   container.removeClass('ex-over');
-        // });
-
-        dragulaService.options($scope, 'bag-one', {
-          revertOnSpill: true
+      $scope.addTask = (function (res) {
+      TaskService.addTask(res).then(function(res) {
+        $scope.tasks.push(res.data);
         });
-      }]);
+      });
+
+      $scope.editTask = function(id, field, update) {
+      TaskService.editTask(id, field, update).then(function(res) {
+        $scope.tasks = res.data;
+        });
+      };
+
+      $scope.deleteTask = function(id) {
+      TaskService.deleteTask(id).then(function(res) {
+         $scope.tasks = res.data;
+        });
+      };
+
+      $scope.$on('first-bag.drag', function (e, el) {
+        console.log('drag');
+      });
+
+      $scope.$on('first-bag.drop', function (e, el) {
+        console.log(e);
+        console.log(el);
+      });
+
+      $scope.$on('first-bag.over', function (e, el, container) {
+        console.log('over');
+      });
+
+      $scope.$on('first-bag.out', function (e, el, container) {
+        console.log('out');
+      });
+  }]);
 }());
