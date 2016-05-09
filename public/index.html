@@ -10,7 +10,7 @@
 <body ng-app="kanban">
   <div id="pageHead">
     <h1 id='mainTitle'>Kanbangular</h1>
-    <p onclick="classChange()">Add Task</p>
+    <p id="addButton"  onclick="classChange()"  ng-click="toggle"> {{toggleText}} </p>
   </div>
 
   <div ng-view></div>

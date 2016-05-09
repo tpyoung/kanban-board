@@ -1,6 +1,5 @@
  <div id='allPage' class='newTask-Up'>
  <div id="addTaskForm">
-  <h2>Add New Task</h2>
   <form action="/" method="POST">
 
     <label for="Title">Title: </label>
@@ -14,8 +13,7 @@
     <label for="Due">Due: </label>
     <input type="date" value="2016-05-28" id="Due"  ng-model="newTask.dueDate">
 
-    <label for="status">Status: </label>
-    <input type="text" id="status" ng-model="newTask.status">
+    <input type="text" id="status" ng-hide='true' ng-model="newTask.status" value='todo'>
 
     <button type="button" id="newTaskBtn" ng-click="addTask(newTask)" onclick="classChange()">Add Task</button>
   </form>
