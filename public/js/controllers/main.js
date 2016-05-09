@@ -31,21 +31,26 @@ var app =  angular.module('kanban')
         });
       };
 
-      $scope.$on('first-bag.drag', function (e, el) {
-        console.log('drag');
-      });
-
       $scope.$on('first-bag.drop', function (e, el) {
-        console.log(e);
-        console.log(el);
-      });
+       console.log('drop');
+       var idText = (el[0].innerHTML);
+       console.log(idText);
+        var idStart = idText.indexOf('@') + 1;
+        var idEnd = idText.indexOf('@', idStart);
+        var id = idText.substring(idStart, idEnd);
+        console.log(id);
 
-      $scope.$on('first-bag.over', function (e, el, container) {
-        console.log('over');
-      });
+        var statusText = (el[0].parentNode.innerHTML);
+        var statusstart = statusText.indexOf("{status: '") + 10;
+        var statusend = statusText.indexOf("'", statusstart);
+        var update = statusText.substring(statusstart, statusend);
+        console.log(update);
+        var field  = 'status';
 
-      $scope.$on('first-bag.out', function (e, el, container) {
-        console.log('out');
-      });
+        TaskService.editTask(id, 'status', update).then(function(res){
+          $scope.tasks = res.data;
+        })
+        .catch(e);
+    });
   }]);
 }());

@@ -27,9 +27,13 @@
     "sequelize-cli": "^2.4.0"
   },
   "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "browser-sync": "^2.12.5",
     "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-connect": "^4.0.0",
     "gulp-nodemon": "^2.0.6",
-    "gulp-sass": "^2.3.1"
+    "gulp-sass": "^2.3.1",
+    "gulp-sourcemaps": "^1.6.0"
   }
 }

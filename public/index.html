@@ -6,13 +6,14 @@
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" type="text/css" href="/css/dragula.css">
 </head>
-<body ng-app="kanban">
 
-  <h1>Kanban Board</h1>
+<body ng-app="kanban">
+  <div id="pageHead">
+    <h1 id='mainTitle'>Kanbangular</h1>
+    <p onclick="classChange()">Add Task</p>
+  </div>
 
   <div ng-view></div>
-
-
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-route.min.js"></script>
@@ -20,6 +21,7 @@
   <script type="text/javascript" src="/js/myApp.js"></script>
   <script type="text/javascript" src="/js/controllers/main.js"></script>
   <script type="text/javascript" src="/js/services/task.js"></script>
+  <script type="text/javascript" src="/js/extras/onclick.js"></script>
 
 
 </body>

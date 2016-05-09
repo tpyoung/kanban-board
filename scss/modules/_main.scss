@@ -1,0 +1,92 @@
+.newTask-Up {
+    padding-top: 0%;
+    transition: .8s ease-in-out;
+}
+
+.newTask-Down {
+ padding-top: 5%;
+ transition: .8s ease-in-out;
+}
+
+#massContainer{
+  display: flex;
+  justify-content: center;
+  flex-flow: row nowrap;
+  margin: 0 auto;
+  margin-top: 1%;
+  width: 100%;
+  position: absolute;
+}
+
+.todoTaskColumn {
+  padding-left: .5%;
+  margin: 0 auto;
+  flex: 0 0 33%;
+  display: flex;
+  position: relative;
+  flex-flow: column nowrap;
+  background-color: RGBA(104, 107, 121, 0.20);
+    border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+
+}
+.doingTaskColumn {
+  flex: 0 0 33%;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color:RGBA(104, 107, 121, 0.20);
+  border-left: dotted 2.5px RGBA(43, 49, 52, 1.00);
+  border-right: dotted 2.5px RGBA(43, 49, 52, 1.00);
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+
+}
+.doneTaskColumn{
+  flex: 0 0 33.3%;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: RGBA(104, 107, 121, 0.20);
+    border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+
+}
+.task{
+  margin: 0 auto;
+  flex: 0 0 90%;
+  width: 95%;
+  background-color: white;
+  margin-bottom: 2%;
+  padding: 0 0 5% 0 ;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.92);
+  display: flex;
+  flex-flow: column wrap;
+
+  span, input{
+    display: block;
+    margin-bottom: 1%;
+  }
+  .taskName {
+      border-bottom: none;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      background-color: RGBA(114, 114, 114, 0.95);
+      text-transform: uppercase;
+      padding: 2%;
+      color: white;
+      font-weight: 700;
+  }
+  .titleSpan {
+    border-bottom: none;
+  }
+}
+
+.groupTitle {
+  margin-left: 3%;
+  color: white;
+  font-size: 2vw;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+

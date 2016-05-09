@@ -1,37 +1,41 @@
- <div><h1>To-Do List</h1></div>
+ <div id='allPage' class='newTask-Up'>
+ <div id="addTaskForm">
+  <h2>Add New Task</h2>
+  <form action="/" method="POST">
 
-  <div id="addTaskForm">
-    <h2>Add New Task</h2>
-
-    <form action="/" method="POST">
-
-      <label for="Title">Title: </label>
-      <input type="text" id="Title" ng-model="newTask.title">
+    <label for="Title">Title: </label>
+    <input type="text" id="Title" ng-model="newTask.title">
 
 
-      <label for="Author">Author: </label>
-      <input type="text" id="Author" ng-model="newTask.author">
+    <label for="Author">Author: </label>
+    <input type="text" id="Author" ng-model="newTask.author">
 
 
-      <label for="Due">Due: </label>
-      <input type="date" value="2016-05-28" id="Due"  ng-model="newTask.dueDate">
+    <label for="Due">Due: </label>
+    <input type="date" value="2016-05-28" id="Due"  ng-model="newTask.dueDate">
 
-      <label for="status">Status: </label>
-      <input type="text" id="status" ng-model="newTask.status">
+    <label for="status">Status: </label>
+    <input type="text" id="status" ng-model="newTask.status">
 
-      <button type="button" id="newTaskBtn" ng-click="addTask(newTask)">Add Task</button>
-    </form>
+    <button type="button" id="newTaskBtn" ng-click="addTask(newTask)" onclick="classChange()">Add Task</button>
+  </form>
 </div>
-
 
 <div id="massContainer">
 
   <div class='todoTaskColumn' id='todo' dragula='"first-bag"' >
-  <!-- <h2> ToDo </h2> -->
-       <div ng-repeat="task in tasks | filter: {status: 'todo'}"  >
+   <div class='groupTitle'>
+     <h2>Waiting</h2>
+   </div>
+    <div ng-repeat="task in tasks | filter: {status: 'todo'}"  >
         <div class='task'>
-            <span ng-hide="editing" ng-click="editing = true">
-              Title: {{ task.title }}
+            <div ng-hide='true'>
+              @{{task.id}}@
+            </div>
+            <span ng-hide="editing" ng-click="editing = true" class='titleSpan'>
+              <div class='taskName'>
+              {{ task.title }}
+              </div>
             </span>
             <input ng-show="editing" ng-submit="editing = false" ng-model="task.title" placeholder="{{ task.title }}" maxlength="20">
               <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'title', task.title); editing = false">Save</button>
@@ -49,7 +53,7 @@
             <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.dueDate" placeholder="{{ task.dueDate }}">
             <button class="btn" ng-show="editing" type="submit" ng-click="editing = false; editTask(task.id, 'dueDate', task.dueDate)">Save</button>
               <br>
-            <span ng-hide="editing" ng-click="editing = true">
+            <span ng-hide="true">
              status: {{ task.status }}
             </span>
         </div>
@@ -57,11 +61,18 @@
 </div>
 
   <div class='doingTaskColumn' id='doing' dragula='"first-bag"'>
-    <!-- <h2> Doing </h2> -->
-      <div ng-repeat="task in tasks | filter: {status: 'doing'}" >
-        <div  class='task' ng-blur="expression">
-          <span ng-hide="editing" ng-click="editing = true">
-            Title: {{ task.title }}
+  <div class='groupTitle'>
+    <h2>In Progress</h2>
+  </div>
+    <div ng-repeat="task in tasks | filter: {status: 'doing'}" >
+      <div  class='task'>
+        <div ng-hide='true'>
+           @{{task.id}}@
+        </div>
+          <span ng-hide="editing" ng-click="editing = true" class='titleSpan'>
+            <div class='taskName'>
+            {{ task.title }}
+            </div>
           </span>
           <input ng-show="editing" ng-submit="editing = false" ng-model="task.title" placeholder="{{ task.title }}" maxlength="20">
             <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'title', task.title); editing = false">Save</button>
@@ -79,19 +90,26 @@
           <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.dueDate" placeholder="{{ task.dueDate }}">
           <button class="btn" ng-show="editing" type="submit" ng-click="editing = false; editTask(task.id, 'dueDate', task.dueDate)">Save</button>
             <br>
-          <span ng-hide="editing" ng-click="editing = true">
+          <span ng-hide="true">
            status: {{ task.status }}
           </span>
         </div>
     </div>
   </div>
 
-<div class='doneTaskColumn' id='done' dragula='"first-bag"'>
-    <!-- <h2>Done </h2> -->
+  <div class='doneTaskColumn' id='done' dragula='"first-bag"'>
+    <div class='groupTitle'>
+      <h2>Completed</h2>
+    </div>
       <div ng-repeat="task in tasks | filter: {status: 'done'}">
         <div class='task'>
-            <span ng-hide="editing" ng-click="editing = true">
-              Title: {{ task.title }}
+          <div ng-hide='true'>
+             @{{task.id}}@
+          </div>
+            <span ng-hide="editing" ng-click="editing = true" class='titleSpan'>
+              <div class='taskName'>
+              {{ task.title }}
+              </div>
             </span>
             <input ng-show="editing" ng-submit="editing = false" ng-model="task.title" placeholder="{{ task.title }}" maxlength="20">
               <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'title', task.title); editing = false">Save</button>
@@ -109,10 +127,11 @@
             <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.dueDate" placeholder="{{ task.dueDate }}">
             <button class="btn" ng-show="editing" type="submit" ng-click="editing = false; editTask(task.id, 'dueDate', task.dueDate)">Save</button>
               <br>
-            <span ng-hide="editing" ng-click="editing = true">
+            <span ng-hide="true">
              status: {{ task.status }}
             </span>
         </div>
     </div>
     </div>
+</div>
 </div>
