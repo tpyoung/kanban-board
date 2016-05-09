@@ -8,11 +8,10 @@ var app =  angular.module('kanban')
     .controller('MainController', ['$scope', '$document', '$http', 'IndexService', 'TaskService', 'dragulaService',
       function($scope, $http, $document, IndexService, TaskService, dragulaService) {
 
-        $scope.formIsActive = IndexService.formIsActive;
+        $scope.IndexService = IndexService;
 
-        $scope.$watch('formIsActive', function (newVal, oldVal) {
-          console.log('hey der');
-          $scope.formIsActive = newVal;
+        $scope.$on('formIsActive', function () {
+          $scope.formIsActive = IndexService.formIsActive;
         });
 
         $scope.tasks = [];

@@ -6,10 +6,10 @@
 
     .service('IndexService', ['$http', '$document', function IndexService($http, $document) {
 
+      this.formIsActive = false;
+
       this.toggleForm = function() {
         this.formIsActive = !this.formIsActive;
-        console.log('yo yo');
       };
-      this.formIsActive = false;
     }]);//end of service
 }());

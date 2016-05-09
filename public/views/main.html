@@ -1,14 +1,12 @@
- <div id='allPage' ng-init="formIsActive2 = formIsActive" ng-class="{'newTask-Down' : formIsActive2, 'newTask-Up': !formIsActive2}">
+ <div id='allPage' ng-class="{'newTask-Down' : IndexService.formIsActive, 'newTask-Up': !IndexService.formIsActive}">
  <div id="addTaskForm">
   <form action="/" method="POST">
 
     <label for="Title">Title: </label>
     <input type="text" id="Title" ng-model="newTask.title">
 
-
-    <label for="Author">Author: </label>
+    <label for="Author">Completing: </label>
     <input type="text" id="Author" ng-model="newTask.author">
-
 
     <label for="Due">Due: </label>
     <input type="date" value="2016-05-28" id="Due"  ng-model="newTask.dueDate">
@@ -42,16 +40,17 @@
             <input ng-show="editing" ng-submit="editing = false" ng-model="task.title" placeholder="{{ task.title }}" maxlength="20">
               <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'title', task.title); editing = false">Save</button>
               <br>
-            <span ng-hide="editing" ng-click="editing = true">
-              Author: {{ task.author }}
+            <div class='completingAndDue'>
+            <span ng-hide="editing" ng-click="editing = true" class='completingSpan'>
+              Completing: {{ task.author }}
             </span>
             <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.author" placeholder="{{ task.author }}">
             <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'author', task.author); editing = false">Save</button>
             <br>
-            <span ng-hide="editing" ng-click="editing = true">
-             Due Date: {{ task.dueDate }}
+            <span ng-hide="editing" ng-click="editing = true" class='dueSpan'>
+             Due: {{ task.dueDate }}
             </span>
-
+            </div>
             <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.dueDate" placeholder="{{ task.dueDate }}">
             <button class="btn" ng-show="editing" type="submit" ng-click="editing = false; editTask(task.id, 'dueDate', task.dueDate)">Save</button>
               <br>
@@ -79,16 +78,17 @@
           <input ng-show="editing" ng-submit="editing = false" ng-model="task.title" placeholder="{{ task.title }}" maxlength="20">
             <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'title', task.title); editing = false">Save</button>
             <br>
+          <div class='completingAndDue'>
           <span ng-hide="editing" ng-click="editing = true">
-            Author: {{ task.author }}
+            Completing: {{ task.author }}
           </span>
           <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.author" placeholder="{{ task.author }}">
           <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'author', task.author); editing = false">Save</button>
           <br>
           <span ng-hide="editing" ng-click="editing = true">
-           Due Date: {{ task.dueDate }}
+           Due: {{ task.dueDate }}
           </span>
-
+          </div>
           <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.dueDate" placeholder="{{ task.dueDate }}">
           <button class="btn" ng-show="editing" type="submit" ng-click="editing = false; editTask(task.id, 'dueDate', task.dueDate)">Save</button>
             <br>
@@ -116,16 +116,17 @@
             <input ng-show="editing" ng-submit="editing = false" ng-model="task.title" placeholder="{{ task.title }}" maxlength="20">
               <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'title', task.title); editing = false">Save</button>
               <br>
+              <div class='completingAndDue'>
             <span ng-hide="editing" ng-click="editing = true">
-              Author: {{ task.author }}
+              Completing: {{ task.author }}
             </span>
             <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.author" placeholder="{{ task.author }}">
             <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'author', task.author); editing = false">Save</button>
             <br>
             <span ng-hide="editing" ng-click="editing = true">
-             Due Date: {{ task.dueDate }}
+             Due: {{ task.dueDate }}
             </span>
-
+            </div>
             <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.dueDate" placeholder="{{ task.dueDate }}">
             <button class="btn" ng-show="editing" type="submit" ng-click="editing = false; editTask(task.id, 'dueDate', task.dueDate)">Save</button>
               <br>
