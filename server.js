@@ -19,7 +19,7 @@ app
   .use(express.static('public'))
   .use('/tasks',require('./routes/tasks.js'))
   .use('/signUp', require('./routes/users.js'))
-  // .use('/login', require('./routes/login.js'))
+  .use('/login', require('./routes/login.js'))
   .use(session({
     secret : 'Tyler',
     resave : true,
@@ -27,10 +27,6 @@ app
   }))
   .use(passport.initialize())
   .use(passport.session())
-  .use((req, res, next) => {
-    res.locals.username = req.body.username;
-    next();
-  })
   ;
 
   passport.use(new LocalStrategy (
@@ -41,7 +37,7 @@ app
         }
       })
       .then((user) => {
-        console.log('passportuser', user);
+        // console.log('passportuser', user);
         // if(bcrypt.compareSync(password, user[0].password) === false) {
         //   return done(null, false, {message: 'Incorrect password'});
         // }
@@ -69,13 +65,13 @@ app
     });
 
   app.post('/login', passport.authenticate('local'), function(req, res) {
-    console.log('user', req.user);
+    // console.log('user', req.user);
 
     if(req.user) {
      res.json(req.user);
    }
    else {
-    res.json({success:false})
+    res.json({success:false});
    }
 
     }

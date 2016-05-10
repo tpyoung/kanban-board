@@ -9,11 +9,14 @@ const express = require('express'),
 router.route('/')
 
   .post((req, res) => {
-
     User.findAll({
       where : {
-        id: req.body.id
+        username: req.body.username
       }
+    })
+    .then((existingUser) => {
+    console.log('found user', existingUser);
+      res.json(existingUser);
     });
-
   });
+  module.exports = router;
