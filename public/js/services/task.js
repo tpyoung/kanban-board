@@ -12,6 +12,7 @@
           url: '/tasks'
         });
       };
+
       this.addTask = function(task) {
         var data = {
           title : task.title,

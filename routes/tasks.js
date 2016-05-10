@@ -3,21 +3,20 @@
 const express   = require('express'),
       router    = express.Router(),
       db = require('../models'),
-      Task = db.Task
+      Tasks = db.Tasks
       ;
 
 
 router.route('/')
   .get( (req, res) => {
-
-    Task.findAll()
+    Tasks.findAll()
     .then((tasks) => {
        res.send(tasks);
        })
   })
   .post((req, res)  => {
 
-    Task.create({
+    Tasks.create({
       title: req.body.title,
       description: req.body.description,
       author: req.body.author,
@@ -34,14 +33,14 @@ router.route('/')
 
     changingObj[req.body.field] = req.body.update;
 
-    Task.update(changingObj,
+    Tasks.update(changingObj,
     {
       where: {
         id: req.body.id
       }
     })
     .then((tasks)=> {
-      return Task.findAll();
+      return Tasks.findAll();
     })
     .then((tasks) => {
       res.json(tasks);
@@ -54,13 +53,13 @@ router.route('/')
   .delete((req, res, next) => {
     console.log('In Routes, tasks.js', req.body);
 
-    Task.destroy({
+    Tasks.destroy({
       where: {
         id: req.body.id
       }
     })
     .then((tasks) => {
-      return Task.findAll();
+      return Tasks.findAll();
     })
     .then((tasks) => {
       res.json(tasks);

@@ -4,88 +4,83 @@
 const bodyParser = require('body-parser'),
       express    = require('express'),
       PORT       = process.env.PORT || 3000,
+      path       = require('path'),
       app        = express(),
       db         = require('./models'),
       passport   = require('passport'),
       session    = require('express-session'),
       LocalStrategy = require('passport-local').Strategy,
       bcrypt     = require('bcryptjs'),
-      User       = db.User
+      User       = db.User,
+      loginRoute = require('./routes/login.js'),
+      usersRoute = require('./routes/users.js'),
+      tasksRoute = require('./routes/tasks.js')
       ;
 
-app
-  .use(bodyParser.urlencoded({ extended: true }))
-  .use(bodyParser.json())
-  .use(express.static('public'))
-  .use('/tasks',require('./routes/tasks.js'))
-  .use('/signUp', require('./routes/users.js'))
-  // .use('/login', require('./routes/login.js'))
-  .use(session({
-    secret : 'Tyler',
-    resave : true,
-    saveUninitialized : true
-  }))
-  .use(passport.initialize())
-  .use(passport.session())
-  .use((req, res, next) => {
-    res.locals.username = req.body.username;
-    next();
-  })
-  ;
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(session({
+  secret: 'catbutts',
+  resave: false,
+  saveUninitialized: false
+}));
+  passport.serializeUser((user, done) => {
+    done(null, user.id);
+  });
 
-  passport.use(new LocalStrategy (
-    ((username, password, done) => {
-      User.findOne({
-        where: {
-          username: username
-        }
-      })
-      .then((user) => {
-        console.log('passportuser', user);
-        // if(bcrypt.compareSync(password, user[0].password) === false) {
-        //   return done(null, false, {message: 'Incorrect password'});
-        // }
+  passport.deserializeUser((id, done) => {
+    User.findById(id)
+    .then((user) => {
+      done(null, user);
+    });
+  });
 
-        if(!user) {
-          // return done( new Error('user does not exist'));
-          return done('user does not exist');
-        }
+  passport.use('login', new LocalStrategy(
+    (username, password, done) => {
+    User.findOne({where: {username: username}})
+    .then((user) => {
+      if(!user) {
+        return done(null, false, {message: "The username or password is invalid"});
+      }
+      bcrypt.compare(password, user.password, (err, res) => {
+        if(res === true) {
           return done(null, user);
-      })
-      .catch((err) => {
-        console.log('error', err);
-        // return done(err);
-        return done('server error');
+        } else {
+          return done(null, false, {message: "The username or password is invalid"});
+        }
       });
     })
-    ));
-
-    passport.serializeUser(function(user, done) {
-      return done(null, user);
+    .catch((err) => {
+      return done(err);
     });
+  }));
 
-    passport.deserializeUser(function(user, done) {
-      return done(null, user);
-    });
+app.use((req, res, next) => {
+  res.locals.user = req.user;
+  next();
+});
 
-  app.post('/login', passport.authenticate('local'), function(req, res) {
-    console.log('user', req.user);
+app.use('/tasks', tasksRoute);
+app.use('/signup', usersRoute);
+app.use('/login', loginRoute);
+app.use('/logout', (req, res) => {
+  req.logout();
+  res.json({path: '/tasks'});
+});
 
-    if(req.user) {
-     res.json(req.user);
-   }
-   else {
-    res.json({success:false})
-   }
+app.get('/', (req, res) => {
+  res.json({path: '/tasks'});
+});
 
-    }
-
-  );
-
-
+app.get('*', (req, res) => {
+  res.json({path: '/public/index.html',
+    root: __dirname
+  });
+});
 
 db.sequelize.sync().then(() => {
-  app.listen(PORT, () => {
-    console.log(`server running on ${PORT}`);
+  app.listen(3000, () => {
+    console.log('server running on port 3000');
   });
 });
