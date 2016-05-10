@@ -1,13 +1,13 @@
+<div id='registerDiv'>
+  <div id="signUp">
+    <form action="/signUp" class="signUpForm">
+      <label for="Username"> Username : </label>
+      <input type="text" id="username" ng-model="newUser.username">
 
-<div id="signUpForm" class="ng-show">
-  <form action="/signUp">
-    <label for="Username"> Username : </label>
-    <input type="text" id="username" ng-model="newUser.username">
+      <label for="Password"> Password : </label>
+      <input type="text" id="password" ng-model="newUser.password">
 
-    <label for="Password"> Password : </label>
-    <input type="text" id="password" ng-model="newUser.password">
-
-    <button type="button" id="newUserBtn" ng-click="addUser(newUser)" >Sign Up </button>
-
-  </form>
+      <button type="button" id="newUserBtn" ng-click="addUser(newUser)" >Sign Up </button>
+    </form>
+  </div>
 </div>

@@ -8,6 +8,11 @@ var app =  angular.module('kanban')
     .controller('MainController', ['$scope', '$document', '$http', 'IndexService', 'TaskService', 'dragulaService',
       function($scope, $http, $document, IndexService, TaskService, dragulaService) {
 
+        $scope.toggleForm = function() {
+          IndexService.toggleForm();
+        };
+
+        $scope.toggle = true;
         $scope.IndexService = IndexService;
 
         $scope.$on('formIsActive', function () {
@@ -15,25 +20,40 @@ var app =  angular.module('kanban')
         });
 
         $scope.tasks = [];
-
         TaskService.getTasks().then(function(res) {
-          res.data.forEach(function(element) {
-            var date = new Date(element.dueDate);
-            var displayDate = (date.getMonth()+1) + '-' + date.getDate() + '-' + date.getFullYear();
-            element.dueDate = displayDate;
-          });
           $scope.tasks = res.data;
         });
+
+
+        function FixShortDate(txtBox) {
+            if (txtBox === null) {
+                return '';}
+            var re = new RegExp(/(\d{6})(\d{2})?/);
+            if (re.test(txtBox.value))
+            {
+                if (txtBox.value.length == 8) {
+                    txtBox.value = txtBox.value.substring(0, 2) + '/' + txtBox.value.substring(2, 4) + '/' + txtBox.value.substring(4, 8)
+                }
+                if (txtBox.value.length == 6) {
+                    if (txtBox.value.substring(4, 6) < 20)
+                    {
+                     txtBox.value = txtBox.value.substring(0, 2) + '/' + txtBox.value.substring(2, 4) + '/20' + txtBox.value.substring(4, 6);
+                    } else {
+                        txtBox.value = txtBox.value.substring(0, 2) + '/' + txtBox.value.substring(2, 4) + '/19' + txtBox.value.substring(4, 6);
+                    }
+                }
+            }
+            return txtBox.value;
+        }
+
+
         $scope.addTask = (function (res) {
-          var date = new Date(res.dueDate);
-          var myDate = (date.getMonth()+1) + '-' + date.getDate() + '-' + date.getFullYear();
         TaskService.addTask(res).then(function(res) {
-          res.data.dueDate = myDate;
           $scope.tasks.push(res.data);
           });
         });
 
-        $scope.toggle = true;
+       $scope.toggle = true;
 
         $scope.classChange = function() {
         var page = $document.getElementById('allPage');
@@ -71,9 +91,10 @@ var app =  angular.module('kanban')
 
           TaskService.editTask(id, 'status', update).then(function(res){
             $scope.tasks = res.data;
+            console.log(res.data);
           })
           .catch(e);
     });
-
   }]);
 })();
+

@@ -13,13 +13,9 @@
         });
       };
       this.addTask = function(task) {
-        // var rawDate = JSON.stringify(task.dueDate);
-        // var myDate = rawDate.substring(0,11);
-
-        console.log('STRING', task.dueDate)
-
         var data = {
           title : task.title,
+          description: task.description,
           author : task.author,
           dueDate : task.dueDate,
           status : task.status
@@ -34,7 +30,6 @@
       };
 
       this.editTask = function(id, field, update) {
-
         var data = {
           id: id,
           field: field,

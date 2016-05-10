@@ -7,9 +7,7 @@ const express   = require('express'),
       ;
 
 router.route('/')
-
   .post((req,res)=> {
-
     console.log('in routes')
     User.create({
       username: req.body.username,
@@ -19,5 +17,4 @@ router.route('/')
       res.json(newUser);
     });
   });
-
   module.exports = router;

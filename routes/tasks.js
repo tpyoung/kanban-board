@@ -19,6 +19,7 @@ router.route('/')
 
     Task.create({
       title: req.body.title,
+      description: req.body.description,
       author: req.body.author,
       dueDate: req.body.dueDate,
       status: req.body.status
