@@ -10,7 +10,6 @@
 
       this.toggleForm = function() {
         this.formIsActive = !this.formIsActive;
-
       };
     }]);//end of service
 }());
