@@ -27,23 +27,35 @@ app
   }))
   .use(passport.initialize())
   .use(passport.session())
+  .use((req, res, next) => {
+    res.locals.username = req.body.username;
+    next();
+  })
   ;
 
   passport.use(new LocalStrategy (
     ((username, password, done) => {
-      User.findAll({
+      User.findOne({
         where: {
           username: username
         }
       })
       .then((user) => {
-        if(user.length === 0) {
-          return done(null, false, {message: 'Username does not exist'});
+        console.log('passportuser', user);
+        // if(bcrypt.compareSync(password, user[0].password) === false) {
+        //   return done(null, false, {message: 'Incorrect password'});
+        // }
+
+        if(!user) {
+          // return done( new Error('user does not exist'));
+          return done('user does not exist');
         }
-        if(bcrypt.compareSync(password, user[0].password) === false) {
-          return done(null, false, {message: 'Incorrect password'});
-        }
-        return done(null, user);
+          return done(null, user);
+      })
+      .catch((err) => {
+        console.log('error', err);
+        // return done(err);
+        return done('server error');
       });
     })
     ));
@@ -56,12 +68,19 @@ app
       return done(null, user);
     });
 
-  // app.post('/login', ((req, res) => {
-  //   passport.authenticate('local', {
-  //     successRedirect : '/tasks',
-  //     faillureRedirect : '/signUp'
-  //   });
-  // })
+  app.post('/login', passport.authenticate('local'), function(req, res) {
+    console.log('user', req.user);
+
+    if(req.user) {
+     res.json(req.user);
+   }
+   else {
+    res.json({success:false})
+   }
+
+    }
+
+  );
 
 
 

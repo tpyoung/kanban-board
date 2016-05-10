@@ -7,12 +7,12 @@ angular.module('kanban')
 
 
 .service('LoginService', ['$http', function LoginService($http) {
-   this.login = function(user) {
-console.log('service', user);
+   this.login = function(existingUser) {
+console.log('service', existingUser);
 
       var data = {
-        username : user.username,
-        password: user.password
+        username : existingUser.username,
+        password: existingUser.password
       };
 
       var config = {
