@@ -16,7 +16,7 @@ body {
   color: RGBA(241, 118, 58, 1.00);
   padding: 1%;
   width: 98%;
-  position: fixed;
+  position: none;
   z-index: 2;
   display: flex;
   flex-flow: row nowrap;
@@ -39,9 +39,10 @@ a {
 
 #signUpForm {
   background-color:  white;
-  padding: 10%;
-  margin-top: 10%;
-  height: 600px;
+  margin-top: 30%;
+  margin: 0 auto;
+
+
 }
 
 @import "modules/main";

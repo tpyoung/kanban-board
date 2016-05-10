@@ -10,7 +10,7 @@ router.route('/')
 
   .post((req,res)=> {
 
-    console.log('in routes')
+    console.log('in routes' )
     User.create({
       username: req.body.username,
       password: req.body.password

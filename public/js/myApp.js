@@ -1,3 +1,4 @@
+
 'use strict';
 
 (function() {
@@ -21,6 +22,10 @@
         .when('/signUp', {
           templateUrl : 'views/signup.html',
           controller : 'UserController'
+        })
+        .when('/login', {
+          templateUrl : 'views/login.html',
+          controller : 'LoginController'
         });
 
     }])
