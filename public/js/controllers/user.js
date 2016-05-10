@@ -3,7 +3,7 @@
 
 (function() {
 
-  var app = angular.module('kanban')
+  var myApp = angular.module('kanban')
 
   .controller('UserController', ['$scope', '$document', '$http', 'UserService',
     function($scope, $document, $http, UserSevice) {

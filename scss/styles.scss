@@ -19,7 +19,7 @@ body {
   color: RGBA(241, 118, 58, 1.00);
   padding: 1%;
   width: 98%;
-  position: fixed;
+  position: none;
   z-index: 2;
   display: flex;
   flex-flow: row nowrap;
@@ -45,6 +45,7 @@ a {
   text-decoration:  none;
 }
 
+<<<<<<< HEAD
 #navContainer{
   display: flex;
   flex-flow: row nowrap;
@@ -58,6 +59,13 @@ a {
     font-size: 1.25vw;
   }
     margin-right: -1%;
+=======
+#signUpForm {
+  background-color:  white;
+  margin-top: 30%;
+  margin: 0 auto;
+
+>>>>>>> 05fb2601121fed1ab70fad411b9b9404fbc4811d
 
 }
 

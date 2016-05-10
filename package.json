@@ -19,8 +19,11 @@
   "homepage": "https://github.com/ypyang237/kanban-board#readme",
   "dependencies": {
     "angular-dragula": "^1.2.6",
+    "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.1",
     "express": "^4.13.4",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "pg": "^4.5.5",
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.23.0",
