@@ -15,7 +15,7 @@
            if(res.data){
               // $window.sessionStorage.setItem("user", JSON.stringify(res.data));
               $scope.user = res.data;
-              $window.location.href="/";
+              $window.location.href="/signup";
             }
         });
 

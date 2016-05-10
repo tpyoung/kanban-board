@@ -19,18 +19,9 @@ console.log('service', existingUser);
           headers : {
             'Content-Type': 'application/json'
       }
-
     };
-      console.log('login', data);
-
     var existingUser =  $http.post('/login', data, config);
-    console.log('existingUser', existingUser);
     return existingUser;
-  };
-
-
-
-}]);
-
-
+    };
+  }]);
 }());
