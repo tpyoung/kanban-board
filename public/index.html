@@ -11,9 +11,11 @@
   <div id="pageHead" ng-controller='IndexController'>
     <h1 id='mainTitle'>Kanbangular</h1>
     <div id='navContainer'>
-      <p> | </p>
+        <p> | </p>
       <p id="addButton"  ng-click="toggleForm(); toggle = !toggle">{{toggle && 'Add Tasks' || 'Cancel Add'}}</p>
-      <p> | </p>
+        <p> | </p>
+          <a href="/login"> Log In</a>
+        <p> | </p>
       <a href="/signUp"> Sign Up </a>
     </div>
   </div>

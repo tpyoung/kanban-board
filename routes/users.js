@@ -8,12 +8,6 @@ const express   = require('express'),
 
 router.route('/')
   .post((req,res)=> {
-<<<<<<< HEAD
-    console.log('in routes')
-=======
-
-    console.log('in routes' )
->>>>>>> 05fb2601121fed1ab70fad411b9b9404fbc4811d
     User.create({
       username: req.body.username,
       password: req.body.password
