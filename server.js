@@ -29,8 +29,11 @@ app
   .use(passport.session())
   ;
 
-  passport.use(new LocalStrategy (
+  passport.use('login', new LocalStrategy (
     ((username, password, done) => {
+
+
+      console.log('IN');
       User.findOne({
         where: {
           username: username
@@ -41,7 +44,7 @@ app
         // if(bcrypt.compareSync(password, user[0].password) === false) {
         //   return done(null, false, {message: 'Incorrect password'});
         // }
-
+        console.log('USER', user);
         if(!user) {
           // return done( new Error('user does not exist'));
           return done('user does not exist');
@@ -51,7 +54,7 @@ app
       .catch((err) => {
         console.log('error', err);
         // return done(err);
-        return done('server error');
+        return done(err);
       });
     })
     ));
@@ -64,19 +67,29 @@ app
       return done(null, user);
     });
 
-  app.post('/login', passport.authenticate('local'), function(req, res) {
-    // console.log('user', req.user);
+  app.post('/login', function(req, res, next) {
+    console.log('user', req.user);
 
-    if(req.user) {
-     res.json(req.user);
-   }
-   else {
-    res.json({success:false});
-   }
+    passport.authenticate('local', function(err, user, info) {
 
-    }
-
-  );
+    console.log('LOGIN!!')
+   //  if(req.user) {
+   //   res.json(req.user);
+   // }
+      if(err) {
+        return next(err);
+      }
+      if(!req.user) {
+        return res.send(401, {success:false, message: 'authentication failed'});
+      }
+      req.login(user, function(err) {
+        if(err) {
+          return next(err);
+        }
+        return res.json(req.user);
+      });
+      }) (req, res, next);//end of passport.authenticate
+    });
 
 
 

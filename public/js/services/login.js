@@ -23,9 +23,8 @@ console.log('service', existingUser);
     };
       console.log('login', data);
 
-    var existingUser =  $http.post('/login', data, config);
-    console.log('existingUser', existingUser);
-    return existingUser;
+   return $http.post('/login', data, config);
+
   };
 
 
