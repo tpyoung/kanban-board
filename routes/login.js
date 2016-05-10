@@ -7,21 +7,18 @@ const express = require('express'),
       passport = require('passport')
       ;
 
-  router.route('/')
-  .get((req, res) => {
-    return res.json({path: '/login'});
+router.route('/')
+  .post((req, res) => {
+    console.log('hello');
+    User.findAll({
+      where : {
+        id: req.body.id
+      }
+      });
   })
-// router.route('/')
-//   .get((req, res) => {
-//     User.findAll({
-//       where : {
-//         id: req.body.id
-//       }
-//     })
     .post(passport.authenticate('login', {
     successRedirect: '/tasks',
     failureRedirect: '/login',
-    failureFlash: true,
   }));
   // });
 

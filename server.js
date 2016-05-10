@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(session({
-  secret: 'catbutts',
+  secret: 'catbutts', // ADD TO CONFIG
   resave: false,
   saveUninitialized: false
 }));
@@ -69,15 +69,18 @@ app.use('/logout', (req, res) => {
   res.json({path: '/tasks'});
 });
 
-app.get('/', (req, res) => {
-  res.json({path: '/tasks'});
+app.get('/tasks', (req, res) => {
+  console.log('hi');
+  res.json({path: '/'});
 });
 
-app.get('*', (req, res) => {
-  res.json({path: '/public/index.html',
-    root: __dirname
-  });
+app.get('*', function(req, res){
+  res.sendFile('./public/index.html',
+    {
+      root  : __dirname
+    });
 });
+
 
 db.sequelize.sync().then(() => {
   app.listen(3000, () => {

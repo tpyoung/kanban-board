@@ -6,16 +6,14 @@ const express   = require('express'),
       Tasks = db.Tasks
       ;
 
-
 router.route('/')
   .get( (req, res) => {
     Tasks.findAll()
     .then((tasks) => {
        res.send(tasks);
-       })
+       });
   })
   .post((req, res)  => {
-
     Tasks.create({
       title: req.body.title,
       description: req.body.description,

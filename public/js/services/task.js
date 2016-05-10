@@ -7,10 +7,13 @@
     .service('TaskService', ['$http', function TaskService($http) {
 
       this.getTasks = function() {
-        return $http({
+
+          var task = $http({
           method: 'GET',
           url: '/tasks'
         });
+          console.log(task);
+          return task;
       };
 
       this.addTask = function(task) {

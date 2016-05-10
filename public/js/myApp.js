@@ -27,11 +27,7 @@
           templateUrl : 'views/login.html',
           controller : 'LoginController'
         });
-
     }])
     .run([function(){
-
     }]);
-
-
 }());
