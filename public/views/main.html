@@ -58,7 +58,7 @@
             <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.dueDate" placeholder="{{ task.dueDate }}">
             <button class="btn" ng-show="editing" type="submit" ng-click="editing = false; editTask(task.id, 'dueDate', task.dueDate)">Save</button>
             </div>
-            <button class="delete" ng-show="editing" type="submit" ng-click="editing = false; deleteTask(id)">Delete Task</button>
+            <button class="delete" ng-show="editing" type="submit" ng-click="editing = false; deleteTask(task.id)">Delete Task</button>
             <br>
             <span ng-hide="true">
               status: {{ task.status }}
@@ -102,7 +102,7 @@
           <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.dueDate" placeholder="{{ task.dueDate }}">
           <button class="btn" ng-show="editing" type="submit" ng-click="editing = false; editTask(task.id, 'dueDate', task.dueDate)">Save</button>
           </div>
-          <button class="delete" ng-show="editing" type="submit" ng-click="editing = false; deleteTask(id)">Delete Task</button>
+          <button class="delete" ng-show="editing" type="submit" ng-click="editing = false; deleteTask(task.id)">Delete Task</button>
           <br>
           <span ng-hide="true">
             status: {{ task.status }}
@@ -146,7 +146,7 @@
             <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.dueDate" placeholder="{{ task.dueDate }}">
             <button class="btn" ng-show="editing" type="submit" ng-click="editing = false; editTask(task.id, 'dueDate', task.dueDate)">Save</button>
             </div>
-             <button class="delete" ng-show="editing" type="submit" ng-click="editing = false; deleteTask(id)">Delete Task</button>
+             <button class="delete" ng-show="editing" type="submit" ng-click="editing = false; deleteTask(task.id)">Delete Task</button>
               <br>
             <span ng-hide="true">
              status: {{ task.status }}

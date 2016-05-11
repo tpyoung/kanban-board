@@ -46,7 +46,7 @@ router.route('/')
     });
   })
 
-  .delete((req, res, next) => {
+  .delete( (req, res, next) => {
     Task.destroy({
       where: {
         id: req.body.id
