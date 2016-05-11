@@ -38,17 +38,18 @@ app
         }
       })
       .then((user) => {
-        bcrypt.compare(password, user.dataValues.password, (err, res) => {
-          if (res === true) {
-            return done(null, user);
-          } else {
-          return done(null, false, {message: 'Incorrect password'});
+        if (user) {
+          bcrypt.compare(password, user.dataValues.password, (err, res) => {
+            if (res === true) {
+              return done(null, user);
+            } else {
+              return done(null, false, {message: 'Incorrect password'});
+            }
+          });
         }
-        if(!user) {
+        else {
           return done(null, false, {message:'user does not exist' });
         }
-          return done(null, user.dataValues);
-      });
     })
       .catch((err) => {
         console.log('error', err);

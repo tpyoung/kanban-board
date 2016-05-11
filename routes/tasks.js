@@ -14,7 +14,7 @@ router.route('/')
     Task.findAll()
     .then((tasks) => {
        res.send(tasks);
-       })
+       });
   })
 
   .post(isAuthenticated, (req, res)  => {
