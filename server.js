@@ -21,7 +21,7 @@ app
   .use('/signUp', require('./routes/users.js'))
   // .use('/login', require('./routes/login.js'))
   .use(session({
-    secret : 'Tyler',
+    secret : process.env.SECRET_KEY ||'Tyler',
     resave : true,
     saveUninitialized : true
   }))
