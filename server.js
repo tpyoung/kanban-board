@@ -19,7 +19,7 @@ app
   .use(express.static('public'))
   .use('/tasks',require('./routes/tasks.js'))
   .use('/signUp', require('./routes/users.js'))
-  .use('/login', require('./routes/login.js'))
+  // .use('/login', require('./routes/login.js'))
   .use(session({
     secret : 'Tyler',
     resave : true,
@@ -32,7 +32,6 @@ app
   passport.use('login', new LocalStrategy (
     ((username, password, done) => {
 
-
       console.log('IN');
       User.findOne({
         where: {
@@ -40,20 +39,16 @@ app
         }
       })
       .then((user) => {
-        // console.log('passportuser', user);
         // if(bcrypt.compareSync(password, user[0].password) === false) {
         //   return done(null, false, {message: 'Incorrect password'});
         // }
-        console.log('USER', user);
         if(!user) {
-          // return done( new Error('user does not exist'));
-          return done('user does not exist');
+          return done(null, false, {message:'user does not exist' });
         }
-          return done(null, user);
+          return done(null, user.dataValues);
       })
       .catch((err) => {
         console.log('error', err);
-        // return done(err);
         return done(err);
       });
     })
@@ -68,28 +63,27 @@ app
     });
 
   app.post('/login', function(req, res, next) {
-    console.log('user', req.user);
 
-    passport.authenticate('local', function(err, user, info) {
+    passport.authenticate('login', function(err, user, info) {
+    console.log('LOGIN ROUTE', user);
 
-    console.log('LOGIN!!')
-   //  if(req.user) {
-   //   res.json(req.user);
-   // }
+      if(user) {
+        req.login(user, function(err) {
+          if(err) {
+            return next(err);
+          }
+          return res.json(user);
+        });
+      }
       if(err) {
         return next(err);
+      } //respond 500 or 401
+      if(!user) {
+        console.log('81 no user');
+        return res.send('false');
       }
-      if(!req.user) {
-        return res.send(401, {success:false, message: 'authentication failed'});
-      }
-      req.login(user, function(err) {
-        if(err) {
-          return next(err);
-        }
-        return res.json(req.user);
-      });
-      }) (req, res, next);//end of passport.authenticate
-    });
+    }) (req, res, next);//end of passport.authenticate
+  });
 
 
 

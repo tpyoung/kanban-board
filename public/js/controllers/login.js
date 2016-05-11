@@ -12,9 +12,15 @@
 
       LoginService.login(res).then(function(res) {
         console.log('coming from services - routes - database!!', res.data);
-           if(res.data !== {success:false}){
-              $window.location.href="/";
+           if(res.data !== 'false'){
+              $window.location.href = "/";
             }
+            else {
+              console.log('else');
+              $window.location.href = '/#/signUp';
+            }
+
+
         });
 
     });
