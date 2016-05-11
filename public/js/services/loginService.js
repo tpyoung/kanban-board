@@ -3,8 +3,9 @@
 (function() {
 angular.module('kanban')
 .service('LoginService', ['$http', function LoginService($http) {
+
   this.login = function(existingUser) {
-    console.log('service', existingUser);
+    console.log('loginService', existingUser);
       var data = {
         username : existingUser.username,
         password: existingUser.password
@@ -14,8 +15,7 @@ angular.module('kanban')
             'Content-Type': 'application/json'
           }
       };
-      console.log('login', data);
-      return $http.post('/login', data, config);
+      return  $http.post('/login', data, config);
     };
   }]);
 }());

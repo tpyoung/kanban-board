@@ -1,9 +1,7 @@
 'use strict';
 
 (function() {
-
   angular.module('kanban')
-
     .service('TaskService', ['$http', function TaskService($http) {
 
       this.getTasks = function() {
@@ -12,6 +10,7 @@
           url: '/tasks'
         });
       };
+
       this.addTask = function(task) {
         var data = {
           title : task.title,
@@ -55,5 +54,5 @@
         };
         return $http.delete('/tasks', config);
       };
-    }]);//end of service
+    }]);
 }());

@@ -8,15 +8,15 @@
 </head>
 
 <body ng-app="kanban">
-  <div id="pageHead" ng-controller='IndexController'>
+  <div id="pageHead" ng-controller="IndexController">
     <a href="/">
-    <h1 id='mainTitle' >Kanbangular</h1></a>
-    <div id='navContainer'>
-        <p id="addButton"  ng-click="toggleForm(); toggle = !toggle">{{toggle && 'Add Tasks' || 'Cancel Add'}}</p>
+    <h1 id="mainTitle" >Kanbangular</h1></a>
+    <div id="navContainer">
+        <p id="addButton" ng-click="toggleForm(); toggle = !toggle">{{toggle && 'Add Tasks' || 'Cancel Add'}}</p>
         <p> | </p>
-          <a id='login' href="/login"> Log In</a>
+          <a id="login" href="/login"> Log In</a>
         <p> | </p>
-      <a id='signup' href="/signUp"> Sign Up </a>
+      <a id="signup" href="/signUp"> Sign Up </a>
     </div>
   </div>
 

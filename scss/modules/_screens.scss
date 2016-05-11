@@ -20,10 +20,14 @@
   p{
     padding-right: 5%;
     font-size: 20px;
+    display: none;
+    visibility: hidden;
   }
   a {
     padding-right: 2%;
     font-size: 4vw;
+    display: none;
+    visibility: hidden;
     }
     margin-right: -1%;
   }
@@ -48,8 +52,8 @@
   position: relative;
   flex-flow: column nowrap;
   background-color: RGBA(104, 107, 121, 0.20);
-  border-bottom-right-radius: 6px;
-  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 .doingTaskColumn {
   flex: 0 0 33%;
@@ -58,8 +62,8 @@
   background-color:RGBA(104, 107, 121, 0.20);
   border-left: none;
   border-right: none;
-  border-bottom-right-radius: 6px;
-  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 
 }

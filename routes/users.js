@@ -14,9 +14,7 @@ router.use(bodyParser.json());
 router.route('/')
   .post((req,res) => {
     var password = req.body.password;
-    console.log(password);
     var username = req.body.username;
-    console.log(username);
     bcrypt.hash(password, saltRounds, (err, hash) => {
       User.create({
         username: username,
