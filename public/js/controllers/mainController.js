@@ -24,6 +24,24 @@ var app =  angular.module('kanban')
           $scope.tasks = res.data;
         });
 
+        $scope.moveOnMax = function (field, nextFieldID) {
+          if (field.value.length >= field.maxLength) {
+            nextFieldID.focus();
+            }
+          };
+
+        $scope.joinMDY = function () {
+          var mm = $document.getElementById('mm').value;
+          console.log(mm);
+          var dd = $document.getElementById('dd').value;
+          console.log(dd);
+            var yy = $document.getElementById('yy').value;
+          console.log(yy);
+            $document.getElementById('joint').value = mm+'/'+dd+'/'+yy;
+          var date = ($document.getElementById('joint').value);
+            console.log(date);
+        };
+
         $scope.addTask = (function (res) {
         TaskService.addTask(res).then(function(res) {
           $scope.tasks.push(res.data);

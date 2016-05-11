@@ -12,10 +12,9 @@
 
       LoginService.login(res).then(function(res) {
         console.log('coming from services - routes - database!!', res.data);
-           if(res.data){
-              // $window.sessionStorage.setItem("user", JSON.stringify(res.data));
-              $scope.user = res.data;
-              $window.location.href="/signup";
+           if(res.data !== {success:false}){
+              $window.location.href="/";
+
             }
         });
 
