@@ -39,9 +39,9 @@ app
         }
       })
       .then((user) => {
-        // if(bcrypt.compareSync(password, user[0].password) === false) {
-        //   return done(null, false, {message: 'Incorrect password'});
-        // }
+        if(bcrypt.compareSync(password, user[0].password) === false) {
+          return done(null, false, {message: 'Incorrect password'});
+        }
         if(!user) {
           return done(null, false, {message:'user does not exist' });
         }
