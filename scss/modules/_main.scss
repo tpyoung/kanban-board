@@ -46,13 +46,11 @@
     width: 100%;
     display: flex;
     flex-flow: row nowrap;
-
   }
   #addFormMain{
     margin-left: 1%;
   }
 }
-
 .todoTaskColumn {
   padding-left: .5%;
   margin: 0 auto;
@@ -64,7 +62,6 @@
     border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
 }
-
 .doingTaskColumn {
   flex: 0 0 33%;
   display: flex;

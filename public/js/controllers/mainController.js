@@ -25,9 +25,10 @@ var app =  angular.module('kanban')
         });
 
         $scope.moveOnMax = function (field, nextFieldID) {
-          if (field.value.length >= field.maxLength) {
-            nextFieldID.focus();
-            }
+          console.log(field);
+          // if (field.value.length >= field.maxLength) {
+          //   nextFieldID.focus();
+          //   }
           };
 
         $scope.joinMDY = function () {

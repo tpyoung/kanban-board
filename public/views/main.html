@@ -14,9 +14,9 @@
 
     <p>Due: </p>
     <div class='inputJoin' onblur="joinMDY()">
-      <input placeholder='mm' id="mm" onkeyup="moveOnMax(this,document.getElementById('dd'))" size="2" maxlength="2"></input>
+      <input placeholder='mm' id="mm" ng-keyup="moveOnMax(this ,document.getElementById('dd'))" size="2" maxlength="2"></input>
       <p class='slash'>/<p>
-      <input placeholder='dd' name='dd' id = 'dd' onkeyup="moveOnMax(this,document.getElementById('yy'))" size="2" maxlength="2"></input>
+      <input placeholder='dd' name='dd' id = 'dd' ng-keyup="moveOnMax(this,document.getElementById('yy'))" size="2" maxlength="2"></input>
       <p class='slash'>/<p>
      <input placeholder='yy' name='year' maxlength='4' id="yy"></input>
       <input type="hidden" id="joint" >

@@ -31,7 +31,6 @@ app
 
   passport.use('login', new LocalStrategy (
     ((username, password, done) => {
-
       console.log('IN');
       User.findOne({
         where: {
@@ -39,20 +38,23 @@ app
         }
       })
       .then((user) => {
-        if(bcrypt.compareSync(password, user[0].password) === false) {
+        bcrypt.compare(password, user.dataValues.password, (err, res) => {
+          if (res === true) {
+            return done(null, user);
+          } else {
           return done(null, false, {message: 'Incorrect password'});
         }
         if(!user) {
           return done(null, false, {message:'user does not exist' });
         }
           return done(null, user.dataValues);
-      })
+      });
+    })
       .catch((err) => {
         console.log('error', err);
         return done(err);
       });
-    })
-    ));
+  })));
 
     passport.serializeUser(function(user, done) {
       return done(null, user);

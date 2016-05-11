@@ -24,5 +24,4 @@ router.route('/')
       res.json({path: '/signUp'});
     });
   });
-
   module.exports = router;
