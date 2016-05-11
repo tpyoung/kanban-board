@@ -16,8 +16,8 @@ router.route('/')
        res.send(tasks);
        })
   })
-  .post(isAuthenticated, (req, res)  => {
 
+  .post(isAuthenticated, (req, res)  => {
     Task.create({
       title: req.body.title,
       description: req.body.description,

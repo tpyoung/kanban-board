@@ -23,6 +23,7 @@ body {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+  border-bottom: solid 1px RGBA(241, 118, 58, 1.00);
 
   #mainTitle{
     font-size: 2vw;
