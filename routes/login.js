@@ -21,7 +21,6 @@ router.route('/')
     if (req.body.username === existingUser) {
       res.json(existingUser);
     }
-      res.json({path: '/signUp'});
     });
   });
   module.exports = router;

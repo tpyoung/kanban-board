@@ -20,7 +20,7 @@ app
   .use('/tasks',require('./routes/tasks.js'))
   .use('/signUp', require('./routes/users.js'))
   .use(session({
-    secret : 'Tyler', // ADD TO CONFIG
+    secret : process.env.SECRET_KEY ||'Tyler',
     resave : true,
     saveUninitialized : true
   }))
@@ -36,17 +36,18 @@ app
         }
       })
       .then((user) => {
-        bcrypt.compare(password, user.dataValues.password, (err, res) => {
-          if (res === true) {
-            return done(null, user);
-          } else {
-          return done(null, false, {message: 'Incorrect password'});
+        if (user) {
+          bcrypt.compare(password, user.dataValues.password, (err, res) => {
+            if (res === true) {
+              return done(null, user);
+            } else {
+              return done(null, false, {message: 'Incorrect password'});
+            }
+          });
         }
-        if(!user) {
+        else {
           return done(null, false, {message:'user does not exist' });
         }
-          return done(null, user.dataValues);
-      });
     })
       .catch((err) => {
         return done(err);
@@ -80,6 +81,13 @@ app
       }
     }) (req, res, next);//end of passport.authenticate
   });
+
+app.get('*', function(req, res){
+ res.sendFile('./public/index.html',
+             {
+               root  : __dirname
+             });
+});
 
 db.sequelize.sync().then(() => {
   app.listen(PORT, () => {

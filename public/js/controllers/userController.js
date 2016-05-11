@@ -5,20 +5,24 @@
 
   var myApp = angular.module('kanban')
 
-  .controller('UserController', ['$scope', '$document', '$http', 'UserService',
-    function($scope, $document, $http, UserSevice) {
+  .controller('UserController', ['$scope', '$window', '$location', '$document', '$http', 'UserService',
+    function($scope, $window, $location, $document, $http, UserSevice) {
 
       $scope.users = [];
 
       $scope.addUser = (function(res) {
 
-        console.log('bird', res)
         UserSevice.addUser(res).then(function(res) {
-          console.log('going in database', res)
+
           $scope.users.push(res);
+          $location.path('/');
+
         });
+
       });
 
     }]);
 
 }());
+
+

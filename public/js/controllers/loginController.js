@@ -11,21 +11,18 @@
       $scope.loginUser = (function(res) {
 
       LoginService.login(res).then(function(res) {
-        console.log('coming from services - routes - database!!', res.data);
-           if(res.data !== 'false'){
+
+           if(res.data !== 'false') {
+
+              console.log('$window', $window);
               $window.location.href = "/";
             }
             else {
-              console.log('else');
               $window.location.href = '/#/signUp';
             }
 
-
         });
-
     });
-
-
 
     }]);
 
