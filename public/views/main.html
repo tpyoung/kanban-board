@@ -9,18 +9,11 @@
     <label for="Description">Description: </label>
     <input type="text" id="description" ng-model="newTask.description">
 
-    <label for="Author">Completing: </label>
+    <label for="author">Assign to: </label>
     <input type="text" id="Author" ng-model="newTask.author">
 
-    <p>Due: </p>
-    <div class='inputJoin' onblur="joinMDY()">
-      <input placeholder='mm' id="mm" ng-keyup="moveOnMax(this ,document.getElementById('dd'))" size="2" maxlength="2"></input>
-      <p class='slash'>/<p>
-      <input placeholder='dd' name='dd' id = 'dd' ng-keyup="moveOnMax(this,document.getElementById('yy'))" size="2" maxlength="2"></input>
-      <p class='slash'>/<p>
-     <input placeholder='yy' name='year' maxlength='4' id="yy"></input>
-      <input type="hidden" id="joint" >
-    </div>
+    <label for="due">Due: </label>
+    <input type="text" id="due" ng-model="newTask.dueDate" placeholder="mm/dd/yyyy">
 
     <input type="text" id="status" ng-hide='true' ng-model="newTask.status" value='todo'>
 
@@ -47,11 +40,15 @@
             <input ng-show="editing" ng-submit="editing = false" ng-model="task.title" placeholder="{{ task.title }}" maxlength="20">
               <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'title', task.title); editing = false">Save</button>
               <br>
-              <div class='description'>
+            <span ng-hide="editing" ng-click="editing = true" class='description'>
+
               {{task.description}}
-              </div>
+
+              </span>
+            <input maxlength="200" ng-show="editing" ng-submit="editing = false" ng-model="task.description" placeholder="{{ task.description }}">
+            <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'title', task.description); editing = false">Save</button>
             <div class='completingAndDue'>
-            <span ng-hide="editing" ng-click="editing = true" class='completingSpan'>
+            <span ng-hide="editing" ng-click="editing = true" class='author'>
               Completing: {{ task.author }}
             </span>
             <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.author" placeholder="{{ task.author }}">
@@ -88,11 +85,13 @@
           <input ng-show="editing" ng-submit="editing = false" ng-model="task.title" placeholder="{{ task.title }}" maxlength="20">
             <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'title', task.title); editing = false">Save</button>
             <br>
-            <div class='description'>
-            {{task.description}}
-            </div>
+            <span ng-hide="editing" ng-click="editing = true" class='description'>
+              {{task.description}}
+              </span>
+            <input maxlength="200" ng-show="editing" ng-submit="editing = false" ng-model="task.description" placeholder="{{ task.description }}">
+            <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'title', task.description); editing = false">Save</button>
           <div class='completingAndDue'>
-          <span ng-hide="editing" ng-click="editing = true" class='completingSpan'>
+          <span ng-hide="editing" ng-click="editing = true" class='author'>
             Completing: {{ task.author }}
           </span>
           <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.author" placeholder="{{ task.author }}">
@@ -127,13 +126,16 @@
               </div>
             </span>
             <input ng-show="editing" ng-submit="editing = false" ng-model="task.title" placeholder="{{ task.title }}" maxlength="20">
-              <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'title', task.title); editing = false">Save</button>
-              <br>
-              <div class='description'>
+            <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'title', task.title); editing = false">Save</button>
+            <br>
+            <span ng-hide="editing" ng-click="editing = true" class='description'>
               {{task.description}}
-              </div>
-              <div class='completingAndDue'>
-            <span ng-hide="editing" ng-click="editing = true" class='completingSpan'>
+            </span>
+            <input maxlength="200" ng-show="editing" ng-submit="editing = false" ng-model="task.description" placeholder="{{ task.description }}">
+            <button class="btn" ng-show="editing" type="submit" ng-click="editTask(task.id, 'title', task.description); editing = false">Save</button>
+
+            <div class='completingAndDue'>
+            <span ng-hide="editing" ng-click="editing = true" class='author'>
               Completing: {{ task.author }}
             </span>
             <input maxlength="20" ng-show="editing" ng-submit="editing = false" ng-model="task.author" placeholder="{{ task.author }}">

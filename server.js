@@ -1,16 +1,16 @@
 
 'use strict';
 
-const bodyParser = require('body-parser'),
-      express    = require('express'),
-      PORT       = process.env.PORT || 3000,
-      app        = express(),
-      db         = require('./models'),
-      passport   = require('passport'),
-      session    = require('express-session'),
+const bodyParser    = require('body-parser'),
+      express       = require('express'),
+      PORT          = process.env.PORT || 3000,
+      app           = express(),
+      db            = require('./models'),
+      passport      = require('passport'),
+      session       = require('express-session'),
       LocalStrategy = require('passport-local').Strategy,
-      bcrypt     = require('bcryptjs'),
-      User       = db.User
+      bcrypt        = require('bcryptjs'),
+      User          = db.User
       ;
 
 app
@@ -19,9 +19,8 @@ app
   .use(express.static('public'))
   .use('/tasks',require('./routes/tasks.js'))
   .use('/signUp', require('./routes/users.js'))
-  // .use('/login', require('./routes/login.js'))
   .use(session({
-    secret : 'Tyler',
+    secret : 'Tyler', // ADD TO CONFIG
     resave : true,
     saveUninitialized : true
   }))
@@ -31,7 +30,6 @@ app
 
   passport.use('login', new LocalStrategy (
     ((username, password, done) => {
-      console.log('IN');
       User.findOne({
         where: {
           username: username
@@ -51,7 +49,6 @@ app
       });
     })
       .catch((err) => {
-        console.log('error', err);
         return done(err);
       });
   })));
@@ -67,8 +64,6 @@ app
   app.post('/login', function(req, res, next) {
 
     passport.authenticate('login', function(err, user, info) {
-    console.log('LOGIN ROUTE', user);
-
       if(user) {
         req.login(user, function(err) {
           if(err) {
@@ -81,13 +76,10 @@ app
         return next(err);
       } //respond 500 or 401
       if(!user) {
-        console.log('81 no user');
         return res.send('false');
       }
     }) (req, res, next);//end of passport.authenticate
   });
-
-
 
 db.sequelize.sync().then(() => {
   app.listen(PORT, () => {

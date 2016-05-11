@@ -6,8 +6,8 @@ module.exports = {
       [
       {
         title : "Make Coffee",
-        description: "French Press or Drip please",
-        author : "Jauquin",
+        description: "No room for cream or sugar please",
+        author : "Scully",
         dueDate: '5/10/16',
         status : "todo",
         createdAt : new Date(),
@@ -16,18 +16,18 @@ module.exports = {
       {
         title : "Schedule Meeting",
         description: "Discuss matters of matter and such",
-        author : "Jauquin",
+        author : "Mulder",
         dueDate: '5/9/16',
-        status : "doing",
+        status : "done",
         createdAt : new Date(),
         updatedAt : new Date()
       },
       {
-        title : "Learn Angular",
-        description: "Think you have it kind of down, figure out you don't, flip table, then put table back",
-        author : "River",
+        title : "Write a Book",
+        description: "Go somewhere and do some things",
+        author : "Jack Torrance",
         dueDate: '5/10/16',
-        status : "done",
+        status : "doing",
         createdAt : new Date(),
         updatedAt : new Date()
       }
