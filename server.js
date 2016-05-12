@@ -82,7 +82,6 @@ app
         return next(err);
       } //respond 500 or 401
       if(!user) {
-        console.log('81 no user');
         return res.send('false');
       }
     }) (req, res, next);//end of passport.authenticate

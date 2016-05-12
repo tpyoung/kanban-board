@@ -3,8 +3,7 @@
 const express   = require('express'),
       router    = express.Router(),
       db = require('../models'),
-      Task = db.Task,
-      isAuthenticated = require('../middleware/isAuthenticated.js')
+      Task = db.Task
       ;
 
 
@@ -17,7 +16,7 @@ router.route('/')
        });
   })
 
-  .post(isAuthenticated, (req, res)  => {
+  .post( (req, res)  => {
     Task.create({
       title: req.body.title,
       description: req.body.description,
@@ -29,7 +28,7 @@ router.route('/')
       res.json(newTask);
     });
   })
-  .put(isAuthenticated, (req, res, next) => {
+  .put((req, res, next) => {
 
     var changingObj = {};
 
@@ -52,7 +51,7 @@ router.route('/')
     });
   })
 
-  .delete(isAuthenticated, (req, res, next) => {
+  .delete((req, res, next) => {
     console.log('In Routes, tasks.js', req.body);
 
     Task.destroy({
