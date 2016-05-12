@@ -66,24 +66,37 @@ app
     return done(null, user);
   });
 
+
   app.post('/login', function(req, res, next) {
-    passport.authenticate('login', function(err, user, info) {
-      if(user) {
-        req.login(user, function(err) {
-          if(err) {
-            return next(err);
-          }
-          return res.json(user);
-        });
+    passport.authenticate('local'), function(req, res) {
+      var userDetails = req.existingUser[0].dataValues.username;
+      if(userDetails) {
+      res.send(userDetails);
+
       }
-      if(err) {
-        return next(err);
-      } //respond 500 or 401
-      if(!user) {
-        return res.send('false');
-      }
-    }) (req, res, next);
+
+    };
   });
+
+
+  // app.post('/login', function(req, res, next) {
+  //   passport.authenticate('local', function(err, user, info) {
+  //     if(user) {
+  //       req.login(user, function(err) {
+  //         if(err) {
+  //           return next(err);
+  //         }
+  //         return res.json(user);
+  //       });
+  //     }
+  //     if(err) {
+  //       return next(err);
+  //     } //respond 500 or 401
+  //     if(!user) {
+  //       return res.send('false');
+  //     }
+  //   }) (req, res, next);
+  // });
 
   app.get('*', function(req, res){
     res.sendFile('./public/index.html', {

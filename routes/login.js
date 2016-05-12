@@ -7,7 +7,7 @@ const express = require('express'),
       User    = db.User
       ;
 
-router.route('/login')
+router.route('/')
   .post((req, res) => {
     User.findAll({
       where : {
@@ -15,7 +15,8 @@ router.route('/login')
       }
     })
     .then((existingUser) => {
-      if (req.body.username === existingUser) {
+      if (req.body.username === existingUser[0].dataValues.username) {
+        var existingUser = existingUser[0].dataValues.username;
         res.json(existingUser);
 
       }
