@@ -1,3 +1,4 @@
+
 @import "partials/reset";
 @import url(https://fonts.googleapis.com/css?family=Roboto:100,500);
 @-ms-viewport{
@@ -6,6 +7,7 @@
 
 @import "modules/main";
 @import "modules/logins";
+@import "modules/screens";
 
 body {
   font-family: 'Roboto';
@@ -26,7 +28,7 @@ body {
   border-bottom: solid 1px RGBA(241, 118, 58, 1.00);
 
   #mainTitle{
-    font-size: 2vw;
+    font-size: 24px;
   }
 
   #addButton {
@@ -35,7 +37,13 @@ body {
     outline: none;
     margin-right:5%;
     padding:0;
-    padding-top: 3px;
+    min-width: 50px;
+  }
+  #login {
+    min-width: 50px;
+  }
+  #signup {
+    min-width: 50px;
 
   }
 }
@@ -48,15 +56,15 @@ a {
 #navContainer{
   display: flex;
   flex-flow: row nowrap;
-  width: 20%;
+  align-items: center;
+  width: 250px;
   p{
     padding-right: 5%;
-    font-size: 1.25vw;
+    font-size: 16px;
   }
   a {
     padding-right: 2%;
-    font-size: 1.25vw;
+    font-size: 16px;
   }
     margin-right: -1%;
 }
-

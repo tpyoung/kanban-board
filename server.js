@@ -1,16 +1,17 @@
 
 'use strict';
 
-const bodyParser = require('body-parser'),
-      express    = require('express'),
-      PORT       = process.env.PORT || 3000,
-      app        = express(),
-      db         = require('./models'),
-      passport   = require('passport'),
-      session    = require('express-session'),
+const bodyParser    = require('body-parser'),
+      express       = require('express'),
+      PORT          = process.env.PORT || 3000,
+      app           = express(),
+      db            = require('./models'),
+      passport      = require('passport'),
+      session       = require('express-session'),
       LocalStrategy = require('passport-local').Strategy,
-      bcrypt     = require('bcryptjs'),
-      User       = db.User
+      bcrypt        = require('bcryptjs'),
+      login         = require('./routes/login'),
+      User          = db.User
       ;
 
 app
@@ -19,9 +20,9 @@ app
   .use(express.static('public'))
   .use('/tasks',require('./routes/tasks.js'))
   .use('/signUp', require('./routes/users.js'))
-  // .use('/login', require('./routes/login.js'))
+  .use('/login', login)
   .use(session({
-    secret : process.env.SECRET_KEY ||'Tyler',
+    secret : process.env.SECRET_KEY || 'Tyler',
     resave : true,
     saveUninitialized : true
   }))
@@ -31,7 +32,6 @@ app
 
   passport.use('login', new LocalStrategy (
     ((username, password, done) => {
-      console.log('IN');
       User.findOne({
         where: {
           username: username
@@ -52,24 +52,22 @@ app
         }
     })
       .catch((err) => {
-        console.log('error', err);
+        console.log('bad bad bad bad');
         return done(err);
       });
-  })));
+    })
+  ));
 
-    passport.serializeUser(function(user, done) {
-      return done(null, user);
-    });
+  passport.serializeUser(function(user, done) {
+    return done(null, user);
+  });
 
-    passport.deserializeUser(function(user, done) {
-      return done(null, user);
-    });
+  passport.deserializeUser(function(user, done) {
+    return done(null, user);
+  });
 
   app.post('/login', function(req, res, next) {
-
     passport.authenticate('login', function(err, user, info) {
-    console.log('LOGIN ROUTE', user);
-
       if(user) {
         req.login(user, function(err) {
           if(err) {
@@ -84,18 +82,14 @@ app
       if(!user) {
         return res.send('false');
       }
-    }) (req, res, next);//end of passport.authenticate
+    }) (req, res, next);
   });
 
-
-
-app.get('*', function(req, res){
- res.sendFile('./public/index.html',
-             {
-               root  : __dirname
-             });
-});
-
+  app.get('*', function(req, res){
+    res.sendFile('./public/index.html', {
+      root  : __dirname
+    });
+  });
 
 db.sequelize.sync().then(() => {
   app.listen(PORT, () => {

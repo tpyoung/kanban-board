@@ -3,7 +3,7 @@
 
 module.exports = function(sequelize, Datatypes) {
 
-  var Task = sequelize.define("Task", {
+  var Task = sequelize.define('Task', {
     title: Datatypes.STRING,
     description: Datatypes.STRING,
     author: Datatypes.STRING,

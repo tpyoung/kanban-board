@@ -6,28 +6,55 @@ module.exports = {
       [
       {
         title : "Make Coffee",
-        description: "French Press or Drip please",
-        author : "Jauquin",
+        description: "No room for cream or sugar please",
+        author : "Scully",
         dueDate: '5/10/16',
         status : "todo",
         createdAt : new Date(),
         updatedAt : new Date()
       },
       {
-        title : "Schedule Meeting",
-        description: "Discuss matters of matter and such",
-        author : "Jauquin",
+        title : "Make a list",
+        description: "write down stuff",
+        author : "Mulder",
         dueDate: '5/9/16',
-        status : "doing",
+        status : "done",
         createdAt : new Date(),
         updatedAt : new Date()
       },
       {
-        title : "Learn Angular",
-        description: "Think you have it kind of down, figure out you don't, flip table, then put table back",
-        author : "River",
+        title : "Write a book about Space",
+        description: "The universe, what a concept",
+        author : "Jack",
         dueDate: '5/10/16',
+        status : "todo",
+        createdAt : new Date(),
+        updatedAt : new Date()
+      },
+            {
+        title : "Day Dream",
+        description: "Pretend you're an airplane or something, idk",
+        author : "Scully",
+        dueDate: '5/10/16',
+        status : "todo",
+        createdAt : new Date(),
+        updatedAt : new Date()
+      },
+      {
+        title : "play SSB n64",
+        description: "Unlock Ness",
+        author : "Mulder",
+        dueDate: '5/9/16',
         status : "done",
+        createdAt : new Date(),
+        updatedAt : new Date()
+      },
+      {
+        title : "Take some photos",
+        description: "cool pictures of cool stuff",
+        author : "Jill",
+        dueDate: '5/10/16',
+        status : "doing",
         createdAt : new Date(),
         updatedAt : new Date()
       }

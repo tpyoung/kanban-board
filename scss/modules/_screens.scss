@@ -1,0 +1,69 @@
+@media screen and (max-width: 850px) {
+  #addTaskForm {
+    background-color: RGBA(43, 49, 52, 1.00);
+    display: none;
+    visibility: hidden;
+   }
+  #addButton {
+    visibility: hidden;
+  }
+  #navContainer{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: 20%;
+  padding: 2%;
+
+  #slashOne{
+    visibility: hidden;
+  }
+  p{
+    padding-right: 5%;
+    font-size: 20px;
+    display: none;
+    visibility: hidden;
+  }
+  a {
+    padding-right: 2%;
+    font-size: 4vw;
+    display: none;
+    visibility: hidden;
+    }
+    margin-right: -1%;
+  }
+  .task {
+    font-size: 2vw;
+  }
+  #massContainer{
+  display: flex;
+  justify-content: center;
+  flex-flow: column nowrap;
+  margin: 0 auto;
+  margin-top: 5%;
+  width: 100%;
+  position: absolute;
+}
+.todoTaskColumn {
+  padding-left: .5%;
+  width: 100%;
+  margin: 0 auto;
+  flex: 0 0 33%;
+  display: flex;
+  position: relative;
+  flex-flow: column nowrap;
+  background-color: RGBA(104, 107, 121, 0.20);
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+.doingTaskColumn {
+  flex: 0 0 33%;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color:RGBA(104, 107, 121, 0.20);
+  border-left: none;
+  border-right: none;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+}

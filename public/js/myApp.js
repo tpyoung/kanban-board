@@ -3,36 +3,31 @@
 
 (function() {
 
-
   var myApp =  angular.module('kanban', ['ngRoute', angularDragula(angular)]);
 
   myApp
     .config(['$routeProvider','$locationProvider',
       function($routeProvider, $locationProvider){
-
-      $locationProvider.html5Mode({
-         enabled: true,
-         requireBase: false
-      });
-
-      $routeProvider
-        .when('/', {
-          templateUrl : 'views/main.html',
-          controller  : 'MainController'
-        })
-        .when('/signUp', {
-          templateUrl : 'views/signup.html',
-          controller : 'UserController'
-        })
-        .when('/login', {
-          templateUrl : 'views/login.html',
-          controller : 'LoginController'
+        $locationProvider.html5Mode({
+          enabled: true,
+          requireBase: false
         });
+        $routeProvider
+          .when('/', {
+            templateUrl : 'views/main.html',
+            controller  : 'MainController'
+          })
+          .when('/signUp', {
+            templateUrl : 'views/signup.html',
+            controller : 'UserController'
+          })
+          .when('/login', {
+            templateUrl : 'views/login.html',
+            controller : 'LoginController'
+          });
 
-    }])
+      }])
     .run([function(){
-
+      //
     }]);
-
-
 }());

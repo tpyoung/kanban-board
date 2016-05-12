@@ -6,14 +6,12 @@ const express   = require('express'),
       Task = db.Task
       ;
 
-
 router.route('/')
   .get( (req, res) => {
-
     Task.findAll()
     .then((tasks) => {
-       res.send(tasks);
-       });
+      res.send(tasks);
+    });
   })
 
   .post( (req, res)  => {
@@ -29,16 +27,16 @@ router.route('/')
     });
   })
   .put((req, res, next) => {
+<<<<<<< HEAD
 
+=======
+>>>>>>> fc8ce09001c07c1a5e373311958419afe90c4686
     var changingObj = {};
-
     changingObj[req.body.field] = req.body.update;
-
-    Task.update(changingObj,
-    {
-      where: {
-        id: req.body.id
-      }
+    Task.update(changingObj, {
+        where: {
+          id: req.body.id
+        }
     })
     .then((tasks)=> {
       return Task.findAll();
@@ -51,9 +49,13 @@ router.route('/')
     });
   })
 
+<<<<<<< HEAD
   .delete((req, res, next) => {
     console.log('In Routes, tasks.js', req.body);
 
+=======
+  .delete( (req, res, next) => {
+>>>>>>> fc8ce09001c07c1a5e373311958419afe90c4686
     Task.destroy({
       where: {
         id: req.body.id
@@ -68,9 +70,6 @@ router.route('/')
     .catch((err) => {
       return  next ({err: err});
     });
-
   });
 
-
-
-  module.exports = router;
+module.exports = router;
