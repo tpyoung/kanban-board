@@ -27,10 +27,7 @@ router.route('/')
     });
   })
   .put((req, res, next) => {
-<<<<<<< HEAD
 
-=======
->>>>>>> fc8ce09001c07c1a5e373311958419afe90c4686
     var changingObj = {};
     changingObj[req.body.field] = req.body.update;
     Task.update(changingObj, {
@@ -49,13 +46,10 @@ router.route('/')
     });
   })
 
-<<<<<<< HEAD
+
   .delete((req, res, next) => {
     console.log('In Routes, tasks.js', req.body);
 
-=======
-  .delete( (req, res, next) => {
->>>>>>> fc8ce09001c07c1a5e373311958419afe90c4686
     Task.destroy({
       where: {
         id: req.body.id
